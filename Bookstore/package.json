@@ -1,0 +1,26 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "Bookstore nodejs project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radito3/Bookstore.git"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "express-paginate": "^0.2.2",
+    "mongoose": "*",
+    "mongoose-paginate": "*" 
+  },
+  "author": "Rangel Ivanov & Teodor Spasov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radito3/Bookstore/issues"
+  },
+  "homepage": "https://github.com/radito3/Bookstore#readme"
+}
