@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+	<meta name="author" content="Rangel Ivanov">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header><b>Bulls and Cows</b></header>
+
+    <div>
+		<button id="NG" class="button">New Game</button>
+		<input id="numLen" type="text" name="NumberLength" value="3">
+    </div>
+    <div class="toSuggest">
+    	<div class="toSuggest">
+    		<span class="toSuggest">
+    			<button id="surrender" class="button">Surrender</button>
+    			<button id="restart" class="button">Restart</button>
+    			<button id="displayCurrentSolution" class="button">Display Current Solution</button>
+    		</span>
+    	</div>
+    	<label>Enter number:</label><br>
+    	<input id="suggNum" type="text" name="suggestedNumber">
+    	<button id="submitNum">OK</button>
+    </div>
+    <p id="one"></p>
+
+    <footer><i>Rangel Ivanov 11<sup>a</sup> №25</i></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/solution.js"></script>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
+</body>
+</html>
