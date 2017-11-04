@@ -1,10 +1,9 @@
 package org.elsys.manytoone;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import org.apache.commons.collections4.bidimap.DualLinkedHashBidiMap;
 
 /**
  * Introduces the notation of many-to-one relation. This is where the M and O of
@@ -23,6 +22,13 @@ import org.apache.commons.collections4.bidimap.DualLinkedHashBidiMap;
  *            the type of the "target" objects.
  */
 public class ManyToOneRelation<M, O> {
+	
+	private LinkedHashMap<M, O> map;
+	
+	public ManyToOneRelation() {
+		map = new LinkedHashMap<M, O>();
+	}
+	
 	/**
 	 * Connects the given source with the given target. If this source was
 	 * previously connected with another target the old connection is lost.
@@ -31,12 +37,6 @@ public class ManyToOneRelation<M, O> {
 	 * @param target
 	 * @return
 	 */
-	private DualLinkedHashBidiMap<M, O> map;
-	
-	public ManyToOneRelation() {
-		map = new DualLinkedHashBidiMap<M, O>();
-	}
-	
 	public boolean connect(M source, O target) {
 		map.put(source, target);
 		return true;
@@ -72,10 +72,8 @@ public class ManyToOneRelation<M, O> {
 	 *         collection if there are no sources connected with this target.
 	 */
 	public Collection<M> getSources(O target) {
-		//not sure if working
-		return map.entrySet().stream()
-				.filter(el -> el.getValue() == target)
-				.map(el -> el.getKey())
+		return map.keySet().stream()
+				.filter(el -> Objects.equals(map.get(el), target))
 				.collect(Collectors.toSet());
 	}
 
@@ -103,9 +101,16 @@ public class ManyToOneRelation<M, O> {
 	 * @param target
 	 */
 	public void disconnect(O target) {
-		//not sure if working
-		map.entrySet().stream()
-        	.filter(entry -> Objects.equals(entry.getValue(), target));
+		this.getSources(target).stream()
+			.forEach(el -> {
+				map.keySet().stream()
+					.peek(key -> {
+						if (Objects.equals(key, el)) {
+							map.remove(key);
+						}
+					})
+					.collect(Collectors.toSet());
+			});
 	}
 
 	/**
