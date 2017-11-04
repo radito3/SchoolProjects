@@ -16,7 +16,7 @@ public class TodoListImpl implements TodoList {
 	public TodoListImpl(String input) {
 		List<String> lines = Arrays.asList(input.split("\n"));
 		lines.stream()
-			.peek(line -> {
+			.forEach(line -> {
 				Pattern pattern = 
 						Pattern.compile("^(\\w+)\\s+\\|\\s(.+)\\s+\\|\\s(\\w+)\\s*\\|\\s(.+)\r$");
 				Matcher matcher = pattern.matcher(line);
@@ -27,8 +27,7 @@ public class TodoListImpl implements TodoList {
 					String[] tags = matcher.group(4).split(", ");
 					this.tasks.add(new TaskImpl(status, descr, priority, tags));
 				}
-			})
-			.collect(Collectors.toList());
+			});
 	}
 	
 	public TodoListImpl(List<Task> list) {
