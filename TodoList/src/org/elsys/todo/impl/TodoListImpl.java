@@ -65,9 +65,7 @@ public class TodoListImpl implements TodoList {
 		List<Task> list = this.getTasks();
 		other.getTasks().stream()
 			.filter(t -> !list.contains(t))
-			.forEach(t -> {
-			    list.add(t);
-			});
+			.forEach(t -> list.add(t));
 		return new TodoListImpl(list);
 	}
 
