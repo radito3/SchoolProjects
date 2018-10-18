@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.elsys.todo.*;
 
@@ -13,17 +14,16 @@ public class TodoListImpl implements TodoList {
 	private List<Task> tasks = new ArrayList<Task>();
 
 	public TodoListImpl(String input) {
-		List<String> lines = Arrays.asList(input.split("\n"));
-		lines.stream()
+		Arrays.stream(input.split("\n"))
 			.forEach(line -> {
-				Pattern pattern = 
-						Pattern.compile("^(\\w+)\\s+\\|\\s(.+)\\s+\\|\\s(\\w+)\\s*\\|\\s(.+)\r$");
+				Pattern pattern = Pattern.compile("^(\\w+)\\s+\\|\\s(.+)\\s+\\|\\s(\\w+)\\s*\\|\\s(.+)\r$");
 				Matcher matcher = pattern.matcher(line);
 				if (matcher.matches()) {
 					Status status = Status.valueOf(Status.class, matcher.group(1));
 					String descr = matcher.group(2);
 					Priority priority = Priority.valueOf(Priority.class, matcher.group(3).toUpperCase());
 					String[] tags = matcher.group(4).split(", ");
+					
 					this.tasks.add(new TaskImpl(status, descr, priority, tags));
 				}
 			});
@@ -62,11 +62,8 @@ public class TodoListImpl implements TodoList {
 	
 	@Override
 	public TodoList join(TodoList other) {
-		List<Task> list = this.getTasks();
-		other.getTasks().stream()
-			.filter(t -> !list.contains(t))
-			.forEach(t -> list.add(t));
-		return new TodoListImpl(list);
+		return new TodoListImpl(Stream.concat(this.getTasks().stream(), other.getTasks().stream())
+					.distinct().collect(Collectors.toList()));
 	}
 
 }
