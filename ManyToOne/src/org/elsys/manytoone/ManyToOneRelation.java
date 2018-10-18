@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 public class ManyToOneRelation<M, O> {
 	
 	private LinkedHashMap<M, O> map;
+	//may try with Map<Set<M>, O> map;
 	
 	public ManyToOneRelation() {
 		map = new LinkedHashMap<M, O>();
@@ -101,6 +102,8 @@ public class ManyToOneRelation<M, O> {
 	 * @param target
 	 */
 	public void disconnect(O target) {
+		//must! be reworked
+		//a stream within a stream is bad
 		this.getSources(target).stream()
 			.forEach(el -> {
 				map.keySet().stream()
