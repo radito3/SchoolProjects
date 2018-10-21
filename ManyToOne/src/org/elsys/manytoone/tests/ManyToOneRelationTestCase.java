@@ -20,7 +20,7 @@ public class ManyToOneRelationTestCase {
 
 	@After
 	public void tearDown() throws Exception {
-		// what is this supposed to do?
+		map = null;
 	}
 
 	@Test

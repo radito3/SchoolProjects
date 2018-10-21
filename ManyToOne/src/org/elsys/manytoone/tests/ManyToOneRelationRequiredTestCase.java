@@ -1,10 +1,9 @@
 package org.elsys.manytoone.tests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.elsys.manytoone.ManyToOneRelation;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class ManyToOneRelationRequiredTestCase {
 
@@ -16,7 +15,7 @@ public class ManyToOneRelationRequiredTestCase {
 		relation1.connect("Integer2", new Integer(2));
 		relation2.connect("Integer1", new Integer(1));
 		relation2.connect("Integer2", new Integer(2));
-		assertTrue(relation1.equals(relation2));
+		assertEquals(relation1, relation2);
 	}
 
 	@Test
@@ -26,6 +25,6 @@ public class ManyToOneRelationRequiredTestCase {
 		relation1.connect("Integer1", new Integer(1));
 		relation2.connect("Integer1", new Integer(1));
 		relation2.connect("Integer2", new Integer(2));
-		assertFalse(relation1.equals(relation2));
+		assertNotEquals(relation1, relation2);
 	}
 }
