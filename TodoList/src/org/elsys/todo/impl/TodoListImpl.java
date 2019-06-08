@@ -14,30 +14,30 @@ public class TodoListImpl implements TodoList {
 	private List<Task> tasks = new ArrayList<Task>();
 
 	public TodoListImpl(String input) {
-		Arrays.stream(input.split("\n"))
-			.forEach(line -> {
-				Pattern pattern = Pattern.compile("^(\\w+)\\s+\\|\\s(.+)\\s+\\|\\s(\\w+)\\s*\\|\\s(.+)\r$");
-				Matcher matcher = pattern.matcher(line);
-				if (matcher.matches()) {
-					Status status = Status.valueOf(Status.class, matcher.group(1));
-					String descr = matcher.group(2);
-					Priority priority = Priority.valueOf(Priority.class, matcher.group(3).toUpperCase());
-					String[] tags = matcher.group(4).split(", ");
-					
-					this.tasks.add(new TaskImpl(status, descr, priority, tags));
-				}
-			});
+		String[] lines = input.split("\n");
+		for (String line : lines) {
+			Pattern pattern = Pattern.compile("^(\\w+)\\s+\\|\\s(.+)\\s+\\|\\s(\\w+)\\s*\\|\\s(.+)\r$");
+			Matcher matcher = pattern.matcher(line);
+			if (!matcher.matches()) 
+				continue;
+
+			Status status = Status.valueOf(Status.class, matcher.group(1));
+			String descr = matcher.group(2);
+			Priority priority = Priority.valueOf(Priority.class, matcher.group(3).toUpperCase());
+			String[] tags = matcher.group(4).split(", ");
+
+			this.tasks.add(new TaskImpl(status, descr, priority, tags));
+		}
 	}
 	
 	public TodoListImpl(List<Task> list) {
-		this.tasks = list;
+		this.tasks = new ArrayList<Task>(list);
 	}
 
 	@Override
 	public Boolean isCompleted() {
 		return tasks.stream()
-				.filter(t -> t.getStatus() != Status.DONE)
-				.count() == 0;
+				.allMatch(t -> t.getStatus() == Status.DONE);
 	}
 
 	@Override
