@@ -46,9 +46,9 @@ public:
         }
 
         for (size_t i = deck.size() - 1; i >= hand_size; i--) {
-            hand_.push_back(deck.at(i));
+             hand_.push_back(deck.back());
+             deck.pop_back();
         }
-        _erase(deck.cbegin(), deck.cbegin() + hand_size);
     }
 
      bool is_dealt() {
