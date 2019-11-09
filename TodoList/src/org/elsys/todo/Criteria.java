@@ -6,19 +6,19 @@ import org.elsys.todo.impl.CriteriaImpl;
 
 public interface Criteria {
 
-	public static Criteria status(Status status) {
+	static Criteria status(Status status) {
 		return new CriteriaImpl(status);
 	}
 
-	public static Criteria priority(Priority priority) {
+	static Criteria priority(Priority priority) {
 		return new CriteriaImpl(priority);
 	}
 
-	public static Criteria tags(String[] tags) {
+	static Criteria tags(String[] tags) {
 		return new CriteriaImpl(tags);
 	}
 
-	public Predicate<Task> getFilter();
+	Predicate<Task> getFilter();
 	
 	/**
 	 * Creates new Criteria instance representing conjunction with the provided

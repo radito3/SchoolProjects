@@ -1,8 +1,9 @@
 package org.elsys.todo.impl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ import org.elsys.todo.*;
 
 public class TodoListImpl implements TodoList {
 
-	private List<Task> tasks = new ArrayList<Task>();
+	private List<Task> tasks = new ArrayList<>();
 
 	public TodoListImpl(String input) {
 		String[] lines = input.split("\n");
@@ -31,7 +32,7 @@ public class TodoListImpl implements TodoList {
 	}
 	
 	public TodoListImpl(List<Task> list) {
-		this.tasks = new ArrayList<Task>(list);
+		this.tasks = new ArrayList<>(list);
 	}
 
 	@Override
@@ -42,9 +43,9 @@ public class TodoListImpl implements TodoList {
 
 	@Override
 	public Double percentageCompleted() {
-		double numCompleted = tasks.stream()
+		long numCompleted = tasks.stream()
 				.filter(t -> t.getStatus() == Status.DONE)
-				.collect(Collectors.toList()).size();
+				.count();
 		return new Double(Math.round((numCompleted / tasks.size()) * 100.0));
 	}
 
@@ -62,8 +63,9 @@ public class TodoListImpl implements TodoList {
 	
 	@Override
 	public TodoList join(TodoList other) {
-		return new TodoListImpl(Stream.concat(this.getTasks().stream(), other.getTasks().stream())
-					.distinct().collect(Collectors.toList()));
+		Set<Task> allTasks = new HashSet<>(tasks);
+		allTasks.addAll(other.getTasks());
+		return new TodoListImpl(new ArrayList<>(allTasks));
 	}
 
 }
