@@ -13,13 +13,7 @@ public class Box extends BallContainer {
 	}
 
 	public Iterator<Ball> getBallsFromSmallest() {
-		container.sort(new Comparator<Ball>() {
-			@Override
-			public int compare(Ball b1, Ball b2) {
-				return b1.getVolume() == b2.getVolume() ? 
-						0 : b1.getVolume() < b2.getVolume() ? -1 : 1;
-			}
-		});
+		container.sort(Comparator.comparingDouble(Ball::getVolume));
 		return container.iterator();
 	}
 	
