@@ -7,26 +7,21 @@
 #include "../Card.hh"
 #include "../OperatorOverloading.hh"
 
-template <class T>
-class Sort : public Command<T> {
-    const char* name = nullptr;
+template <class Game>
+class Sort : public Command<Game> {
 
 public:
-    explicit Sort(const char* name) {
-        this->name = name;
-    }
 
     const char* get_name() const noexcept override {
-        return name;
+        return "sort";
     }
 
-    void execute(T& game_instance) override {
-        if (game_instance.is_dealt()) {
-            game_instance.clear_hand();
+    void execute(Game& game) override {
+        if (game.get_hand().is_dealt()) {
+            game.get_hand().clear();
         }
-        std::deque<Card> deck = game_instance.get_deck();
-        std::sort(deck.begin(), deck.end(), comp);
-        std::cout << deck << std::endl;
+        game.get_deck().sort();
+        game.get_deck().print();
     }
 };
 

@@ -3,102 +3,80 @@
 
 #include "Hand.hh"
 #include "Card.hh"
-#include "Helpers.hh"
 #include <deque>
 #include <iostream>
+#include <vector>
 
-class Belote : public Hand {
+//TODO maybe extend War?
+class Belote : public Game {
+    const std::vector<char> belote_ranks = {'7', '8', '9', 'J', 'Q', 'K', 'T', 'A' };
 
-    bool check_suit(size_t current, int depth) {
-        std::deque<Card> hand = get_hand();
-        int matching = 0;
+    Deck deck_;
+    Hand hand_;
 
-        for (size_t i = 1; i <= depth; i++) {
-            if (hand.at(current).get_suit() == hand.at(current + i).get_suit()) {
-                matching++;
-            }
-        }
-        return matching == depth;
-    }
-
-    bool check_rank(size_t current_card, size_t current_rank, int depth) {
-        std::deque<Card> hand = get_hand();
-        int matching = 0;
-
-        for (size_t i = 0; i < depth; ++i) {
-            if (hand.at(current_card + i).get_rank() == belote_i.ranks.at(current_rank + i)) {
-                matching++;
-            }
-        }
-        return matching == depth;
-    }
-
-    bool belote_games(int num1, int num2) {
-        std::deque<Card> hand = get_hand();
-
-        for (size_t i = 0; i < hand.size() - num1; i++) {
-            if (check_suit(i, num1)) {
-                for (size_t j = 0; j < num2; j++) {
-                    if (check_rank(i, j, num1)) {
-                        return true;
-                    }
-                }
+    bool n_adjacent_cards_of_a_suit(int n) {
+        for (const char suit : suits) {
+            if (hand_.adjacent_cards_of_a_suit(suit) == n) {
+                return true;
             }
         }
         return false;
     }
 
 public:
-    Belote() : Hand(8) {
-        _create_deck(belote_i);
+    Belote() : deck_(belote_ranks), hand_(8) {
+        deck_.print();
     }
 
-    void highest_of_suit(char suit) {
-        Card highest(suit, '6', -1);
-        const std::deque<Card>& hand = get_hand();
+    ~Belote() override {
+        //TODO free dynamically allocated commands
+    }
 
-        for (const Card& current : hand) {
-            if (current.get_suit() == suit) {
-                if (highest.get_power() < current.get_power()) {
-                    highest = current;
-                }
-            }
-        }
+    std::unordered_map<std::string, Command *> get_available_commands() const noexcept override {
 
-        if (highest.get_power() == -1) {
-            std::cerr << "ERROR: No cards with this suit." << std::endl;
+//        commands.push_back(std::make_shared<IsBelote<Belote>>("belote?"));
+
+        return std::unordered_map<std::string, Command *>();
+    }
+
+    Deck &get_deck() override {
+        return deck_;
+    }
+
+    Hand &get_hand() override {
+        return hand_;
+    }
+
+    void print_highest_of_suit(char suit) {
+        const Card* highest = hand_.get_highest_of_suit(suit);
+
+        if (highest == nullptr) {
+            std::cout << std::endl;
         } else {
-            std::cout << highest << std::endl;
+            std::cout << *highest << std::endl;
         }
     }
 
     bool is_belote() {
-        return _matching_suits_on_Q_K();
+        for (const char suit : suits) {
+            if (hand_._matching_suits_on_Q_K(suit)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     bool is_tierce() {
-        return belote_games(2, 6);
+        return n_adjacent_cards_of_a_suit(3);
     }
 
     bool is_quarte() {
-        return belote_games(3, 5);
+        return n_adjacent_cards_of_a_suit(4);
     }
 
     bool is_quint() {
-        return belote_games(4, 4);
+        return n_adjacent_cards_of_a_suit(5);
     }
 };
-
-inline static std::list<std::shared_ptr<Command<Belote>>> get_belote_commands() {
-    std::list<std::shared_ptr<Command<Belote>>> commands;
-    std::list<std::shared_ptr<Command<Belote>>> common = get_common_commands<Belote>();
-
-    commands.insert(commands.cend(), common.cbegin(), common.cend());
-
-    commands.push_back(std::make_shared<IsBelote<Belote>>("belote?"));
-    //TODO add remaining commands
-
-    return commands;
-}
 
 #endif //CARDGAME_BELOTE_HH

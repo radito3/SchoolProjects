@@ -2,25 +2,19 @@
 #define CARDGAME_SIZE_HH
 
 #include "../Command.hh"
+#include "../Game.h"
 
-template <class T>
-class Size : public Command<T> {
-    const char *name = nullptr;
+class Size : public Command {
+    Game* game_;
 
 public:
-    explicit Size(const char* name) {
-        this->name = name;
-    }
+    explicit Size(Game* game) : game_(game) {}
 
-    const char* get_name() const noexcept override {
-        return name;
-    }
-
-    void execute(T& game_instance) override {
-        if (game_instance.is_dealt()) {
-            game_instance.clear_hand();
+    void execute() override {
+        if (game_->get_hand().is_dealt()) {
+            game_->get_hand().clear();
         }
-        std::cout << game_instance.size() << std::endl;
+        std::cout << game_->get_deck().size() << std::endl;
     }
 };
 

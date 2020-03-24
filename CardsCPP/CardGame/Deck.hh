@@ -2,70 +2,80 @@
 #define CARDGAME_DECK_HH
 
 #include "Card.hh"
-#include "Helpers.hh"
+#include "OperatorOverloading.hh"
 #include "GameError.hh"
-#include <deque>
+#include <list>
 #include <algorithm>
 #include <random>
 #include <iostream>
+#include <vector>
 
 class Deck {
-     std::deque<Card> deck_;
+    std::list<Card> deck_;
 
 public:
-
-     void _create_deck(game_info info) {
+    explicit Deck(const std::vector<char> &in_ranks) {
         int power = 0;
-        for (char i : info.suits) {
-            for (char j : info.ranks) {
-                Card a(i, j, power++);
-                deck_.push_back(a);
+        for (char i : suits) {
+            for (char j : in_ranks) {
+                Card card(i, j, power++);
+                deck_.push_back(card);
             }
         }
     }
 
-     void _erase(const std::deque<Card>::const_iterator& begin, const std::deque<Card>::const_iterator& end) {
-        deck_.erase(begin, end);
+    Deck(const Deck &deck) = delete;
+
+    ~Deck() {
+        deck_.clear();
     }
 
-     const std::deque<Card>& get_deck() const {
-        return deck_;
+    void print() const {
+        std::cout << deck_ << std::endl;
     }
 
-     void shuffle_deck() {
+    void shuffle() {
         if (deck_.empty()) {
             throw GameError("ERROR: Not enough cards in deck.");
         }
         std::shuffle(deck_.begin(), deck_.end(), std::mt19937(std::random_device()()));
-        std::cout << deck_ << std::endl;
     }
 
-     size_t size() {
+    void sort() {
+        if (deck_.empty()) {
+            throw GameError("ERROR: Not enough cards in deck.");
+        }
+        std::sort(deck_.begin(), deck_.end(), card_compare());
+    }
+
+    size_t size() const {
         return deck_.size();
     }
 
-     void draw_top_card() {
-        top_card();
+    const Card& draw_top_card() {
+        const Card &card = get_top_card();
         deck_.pop_back();
+        return card;
     }
 
-     void draw_bottom_card() {
-        bottom_card();
+    const Card& draw_bottom_card() {
+        const Card &card = get_bottom_card();
         deck_.pop_front();
+        return card;
     }
 
-     void top_card() {
+    const Card& get_top_card() const {
         if (deck_.empty()) {
             throw GameError("ERROR: Not enough cards in deck.");
         }
-        std::cout << deck_.back() << std::endl;
+        return deck_.back();
     }
 
-     void bottom_card() {
+    const Card& get_bottom_card() const {
         if (deck_.empty()) {
             throw GameError("ERROR: Not enough cards in deck.");
         }
-        std::cout << deck_.front() << std::endl;
+        return deck_.front();
     }
 };
 

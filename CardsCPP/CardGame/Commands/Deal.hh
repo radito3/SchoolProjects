@@ -5,15 +5,11 @@
 
 template <class T>
 class Deal : public Command<T> {
-    const char *name = nullptr;
 
 public:
-    explicit Deal(const char* name) {
-        this->name = name;
-    }
 
     const char* get_name() const noexcept override {
-        return name;
+        return "deal";
     }
 
     void execute(T& game_instance) override {

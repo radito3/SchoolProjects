@@ -2,7 +2,7 @@
 #define CARDGAME_OPERATOROVERLOADING_HH
 
 #include <ostream>
-#include <deque>
+#include <list>
 #include "Card.hh"
 
 std::ostream& operator<<(std::ostream& out, const Card& d) {
@@ -15,7 +15,7 @@ std::ostream& operator<<(std::ostream& out, const Card& d) {
     return out;
 }
 
-std::ostream& operator<<(std::ostream& out, const std::deque<Card>& d) {
+std::ostream& operator<<(std::ostream& out, const std::list<Card>& d) {
     for (const Card& it : d) {
         out << it << " ";
     }

@@ -8,8 +8,8 @@ class BottomCard : public Command<T> {
     const char* name = nullptr;
 
 public:
-    explicit BottomCard(const char* name) {
-        this->name = name;
+    BottomCard(const char* name) : name(name) {
+//        this->name = name;
     }
 
     const char* get_name() const noexcept override {

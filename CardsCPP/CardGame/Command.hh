@@ -1,15 +1,11 @@
 #ifndef CARDGAME_COMMAND_HH
 #define CARDGAME_COMMAND_HH
 
-#include <cstdint>
-
-template <class T>
+//TODO maybe Operation is a better name
 class Command {
 
 public:
-    virtual const char* get_name() const noexcept = 0;
-
-    virtual void execute(T& var) = 0;
+    virtual void execute() = 0;
 
 };
 

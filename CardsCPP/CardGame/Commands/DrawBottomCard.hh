@@ -1,7 +1,6 @@
 #ifndef CARDGAME_DRAWBOTTOMCARD_HH
 #define CARDGAME_DRAWBOTTOMCARD_HH
 
-#include "../Helpers.hh"
 #include "../Command.hh"
 
 template <class T>

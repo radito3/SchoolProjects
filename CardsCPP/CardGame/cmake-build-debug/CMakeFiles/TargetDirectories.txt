@@ -1,0 +1,3 @@
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/cmake-build-debug/CMakeFiles/CardGame.dir
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/cmake-build-debug/CMakeFiles/edit_cache.dir

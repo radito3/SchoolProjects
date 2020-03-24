@@ -3,24 +3,21 @@
 
 #include "../Command.hh"
 
-template <class T>
-class Shuffle : public Command<T> {
-    const char* name = nullptr;
+template <class Game>
+class Shuffle : public Command<Game> {
 
 public:
-    explicit Shuffle(const char* name) {
-        this->name = name;
-    }
 
     const char* get_name() const noexcept override {
-        return name;
+        return "shuffle";
     }
 
-    void execute(T& game_instance) override {
-        if (game_instance.is_dealt()) {
-            game_instance.clear_hand();
+    void execute(Game& game) override {
+        if (game.is_dealt()) {
+            game.clear_hand();
         }
-        game_instance.shuffle_deck();
+        game.get_deck().shuffle();
+        game.get_deck().print();
     }
 };
 
