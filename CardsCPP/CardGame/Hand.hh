@@ -38,8 +38,8 @@ public:
 
         int pow = first_of_a_suit->get_power(), num_cards = 1;
 
-        for (const Card& card : hand_) {
-            if (card.get_power() == (pow + 1)) {
+        for (auto it = first_of_a_suit; it != hand_.end(); it++) {
+            if (it->get_power() == (pow + 1)) {
                 pow++;
                 num_cards++;
             }
