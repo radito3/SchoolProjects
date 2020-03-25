@@ -10,7 +10,7 @@
 class Hand {
     const int hand_size_;
     //TODO handle garbage collection properly (worst case - use std::unique_ptr<Card>)
-    // changed from Card to Card* because, after set.erase() was called, upon trying to print the card, '0 ' shows up
+    // changed from Card to Card* because set.erase() invalidates references
     std::set<Card *, card_compare> hand_;
     bool is_dealt_;
 
