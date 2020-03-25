@@ -5,12 +5,13 @@
 #include <algorithm>
 #include <bitset>
 
-//TODO maybe extend War?
 class Santase : public Game {
     const std::vector<char> santase_ranks = {'9', 'J', 'Q', 'K', 'T', 'A' };
 
     Deck deck_;
     Hand hand_;
+
+    std::unordered_map<std::string, Command *> commands_ = get_available_commands();
 
 public:
     Santase() : deck_(santase_ranks), hand_(6) {
@@ -18,12 +19,19 @@ public:
     }
 
     ~Santase() override {
-        //TODO free dynamically allocated commands
+        for (const auto& pair : commands_) {
+            delete pair.second;
+        }
+        commands_.clear();
     }
 
+    //TODO move to source file
     std::unordered_map<std::string, Command*> get_available_commands() const noexcept override {
+        std::unordered_map<std::string, Command*> commands = get_common_commands();
 
-        return std::unordered_map<std::string, Command*>();
+        //TODO add santase commands
+
+        return commands;
     }
 
     Deck& get_deck() override {
@@ -40,7 +48,7 @@ public:
         std::bitset<3> diff_suit;
 
         for (const char s : suits) {
-            bool matching_suits_on_Q_K = hand_._matching_suits_on_Q_K(suit);
+            bool matching_suits_on_Q_K = hand_.matching_suits_on_Q_K(suit);
             if (s == suit) {
                 same_suit = matching_suits_on_Q_K;
             } else {
@@ -52,7 +60,7 @@ public:
     }
 
     bool fourty(char suit) {
-        return hand_._matching_suits_on_Q_K(suit);
+        return hand_.matching_suits_on_Q_K(suit);
     }
 };
 

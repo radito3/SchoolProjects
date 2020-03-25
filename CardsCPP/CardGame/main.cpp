@@ -1,23 +1,18 @@
 #include <iostream>
 #include <unordered_map>
-#include <sstream>
 #include "GameFactory.h"
 
 using namespace std;
 
 vector<string> get_input_commands(const char *);
+
 void play(Game *, const vector<string> &);
 
 int main(int argc, char *argv[]) {
-    //TODO validate input
     vector<string> commands = get_input_commands(argv[1]);
-
-    cout << boolalpha;
     try {
         Game *game = GameFactory::create_game(commands[0]);
-
         play(game, commands);
-
         delete game;
     } catch (const GameError &err) {
         cerr << err.what() << endl;

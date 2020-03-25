@@ -3,21 +3,20 @@
 
 #include "../Command.hh"
 
-template <class Game>
-class Shuffle : public Command<Game> {
+class Shuffle : public Command {
+    Game *game_;
 
 public:
+    explicit Shuffle(Game *game) : game_(game) {}
 
-    const char* get_name() const noexcept override {
-        return "shuffle";
-    }
+    ~Shuffle() override = default;
 
-    void execute(Game& game) override {
-        if (game.is_dealt()) {
-            game.clear_hand();
+    void execute() override {
+        if (game_->get_hand().is_dealt()) {
+            game_->get_hand().clear();
         }
-        game.get_deck().shuffle();
-        game.get_deck().print();
+        game_->get_deck().shuffle();
+        game_->get_deck().print();
     }
 };
 

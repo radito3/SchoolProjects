@@ -1,26 +1,22 @@
 #ifndef CARDGAME_BOTTOMCARD_HH
 #define CARDGAME_BOTTOMCARD_HH
 
+#include <iostream>
 #include "../Command.hh"
 
-template <class T>
-class BottomCard : public Command<T> {
-    const char* name = nullptr;
+class BottomCard : public Command {
+    Game* game_;
 
 public:
-    BottomCard(const char* name) : name(name) {
-//        this->name = name;
-    }
+    explicit BottomCard(Game* game) : game_(game) {}
 
-    const char* get_name() const noexcept override {
-        return name;
-    }
+    ~BottomCard() override = default;
 
-    void execute(T& game_instance) override {
-        if (game_instance.is_dealt()) {
-            game_instance.clear_hand();
+    void execute() override {
+        if (game_->get_hand().is_dealt()) {
+            game_->get_hand().clear();
         }
-        game_instance.bottom_card();
+        std::cout << game_->get_deck().get_bottom_card().to_string() << std::endl;
     }
 };
 

@@ -1,14 +1,16 @@
 #ifndef CARDGAME_SIZE_HH
 #define CARDGAME_SIZE_HH
 
+#include <iostream>
 #include "../Command.hh"
-#include "../Game.h"
 
 class Size : public Command {
     Game* game_;
 
 public:
     explicit Size(Game* game) : game_(game) {}
+
+    ~Size() override = default;
 
     void execute() override {
         if (game_->get_hand().is_dealt()) {

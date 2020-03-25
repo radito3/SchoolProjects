@@ -3,19 +3,17 @@
 
 #include "../Command.hh"
 
-template <class T>
-class Deal : public Command<T> {
+class Deal : public Command {
+    Game *game_;
 
 public:
+    explicit Deal(Game *game) : game_(game) {}
 
-    const char* get_name() const noexcept override {
-        return "deal";
-    }
+    ~Deal() override = default;
 
-    void execute(T& game_instance) override {
-        game_instance.deal();
-//        std::deque<Card> hand = game_instance.get_hand();
-        std::cout << game_instance.get_hand() << std::endl;
+    void execute() override {
+        game_->get_hand().deal(game_->get_deck());
+        game_->get_hand().print();
     }
 };
 

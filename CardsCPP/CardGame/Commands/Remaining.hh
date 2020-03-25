@@ -1,28 +1,22 @@
 #ifndef CARDGAME_REMAINING_HH
 #define CARDGAME_REMAINING_HH
 
+#include <iostream>
 #include "../Command.hh"
 
-template <class T>
-class Remaining : public Command<T> {
-    const char *name = nullptr;
+class Remaining : public Command {
+    Game* game_;
 
 public:
-    explicit Remaining(const char* name) {
-        this->name = name;
-    }
+    explicit Remaining(Game* game) : game_(game) {}
 
-    Remaining(const Remaining& var) = delete;
+    ~Remaining() override = default;
 
-    const char* get_name() const noexcept override {
-        return name;
-    }
-
-    void execute(T& game_instance) override {
-        if (!game_instance.is_dealt()) {
+    void execute() override {
+        if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");
         }
-        std::cout << game_instance.remaining() << std::endl;
+        std::cout << game_->get_hand().size() << std::endl;
     }
 };
 

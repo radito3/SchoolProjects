@@ -3,16 +3,19 @@
 
 #include "Hand.hh"
 #include "Card.hh"
-#include <deque>
+#include "Command.hh"
+#include "Game.h"
+#include <unordered_map>
 #include <iostream>
 #include <vector>
 
-//TODO maybe extend War?
 class Belote : public Game {
     const std::vector<char> belote_ranks = {'7', '8', '9', 'J', 'Q', 'K', 'T', 'A' };
 
     Deck deck_;
     Hand hand_;
+
+    std::unordered_map<std::string, Command *> commands_ = get_available_commands();
 
     bool n_adjacent_cards_of_a_suit(int n) {
         for (const char suit : suits) {
@@ -29,15 +32,13 @@ public:
     }
 
     ~Belote() override {
-        //TODO free dynamically allocated commands
+        for (const auto& pair : commands_) {
+            delete pair.second;
+        }
+        commands_.clear();
     }
 
-    std::unordered_map<std::string, Command *> get_available_commands() const noexcept override {
-
-//        commands.push_back(std::make_shared<IsBelote<Belote>>("belote?"));
-
-        return std::unordered_map<std::string, Command *>();
-    }
+    std::unordered_map<std::string, Command *> get_available_commands() const noexcept override;
 
     Deck &get_deck() override {
         return deck_;
@@ -53,13 +54,13 @@ public:
         if (highest == nullptr) {
             std::cout << std::endl;
         } else {
-            std::cout << *highest << std::endl;
+            std::cout << highest->to_string() << std::endl;
         }
     }
 
     bool is_belote() {
         for (const char suit : suits) {
-            if (hand_._matching_suits_on_Q_K(suit)) {
+            if (hand_.matching_suits_on_Q_K(suit)) {
                 return true;
             }
         }

@@ -1,26 +1,22 @@
 #ifndef CARDGAME_HIGHEST_HH
 #define CARDGAME_HIGHEST_HH
 
+#include <iostream>
 #include "../Command.hh"
 
-template <class T>
-class Highest : public Command<T> {
-    const char *name = nullptr;
+class Highest : public Command {
+    Game* game_;
 
 public:
-    explicit Highest(const char* name) {
-        this->name = name;
-    }
+    explicit Highest(Game* game) : game_(game) {}
 
-    const char* get_name() const noexcept override {
-        return name;
-    }
+    ~Highest() override = default;
 
-    void execute(T& game_instance) override {
-        if (!game_instance.is_dealt()) {
+    void execute() override {
+        if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");
         }
-        game_instance.highest();
+        std::cout << game_->get_hand().draw_highest().to_string() << std::endl;
     }
 };
 

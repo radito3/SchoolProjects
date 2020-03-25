@@ -7,6 +7,9 @@
 
 class Game {
 
+protected:
+    std::unordered_map<std::string, Command*> get_common_commands() const;
+
 public:
     virtual ~Game() = 0;
 

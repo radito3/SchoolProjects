@@ -123,6 +123,87 @@ CardGame/fast:
 	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/build
 .PHONY : CardGame/fast
 
+Belote.o: Belote.cpp.o
+
+.PHONY : Belote.o
+
+# target to build an object file
+Belote.cpp.o:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Belote.cpp.o
+.PHONY : Belote.cpp.o
+
+Belote.i: Belote.cpp.i
+
+.PHONY : Belote.i
+
+# target to preprocess a source file
+Belote.cpp.i:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Belote.cpp.i
+.PHONY : Belote.cpp.i
+
+Belote.s: Belote.cpp.s
+
+.PHONY : Belote.s
+
+# target to generate assembly for a file
+Belote.cpp.s:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Belote.cpp.s
+.PHONY : Belote.cpp.s
+
+Command.o: Command.cpp.o
+
+.PHONY : Command.o
+
+# target to build an object file
+Command.cpp.o:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Command.cpp.o
+.PHONY : Command.cpp.o
+
+Command.i: Command.cpp.i
+
+.PHONY : Command.i
+
+# target to preprocess a source file
+Command.cpp.i:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Command.cpp.i
+.PHONY : Command.cpp.i
+
+Command.s: Command.cpp.s
+
+.PHONY : Command.s
+
+# target to generate assembly for a file
+Command.cpp.s:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Command.cpp.s
+.PHONY : Command.cpp.s
+
+Game.o: Game.cpp.o
+
+.PHONY : Game.o
+
+# target to build an object file
+Game.cpp.o:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Game.cpp.o
+.PHONY : Game.cpp.o
+
+Game.i: Game.cpp.i
+
+.PHONY : Game.i
+
+# target to preprocess a source file
+Game.cpp.i:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Game.cpp.i
+.PHONY : Game.cpp.i
+
+Game.s: Game.cpp.s
+
+.PHONY : Game.s
+
+# target to generate assembly for a file
+Game.cpp.s:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Game.cpp.s
+.PHONY : Game.cpp.s
+
 GameFactory.o: GameFactory.cpp.o
 
 .PHONY : GameFactory.o
@@ -186,6 +267,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... CardGame"
 	@echo "... edit_cache"
+	@echo "... Belote.o"
+	@echo "... Belote.i"
+	@echo "... Belote.s"
+	@echo "... Command.o"
+	@echo "... Command.i"
+	@echo "... Command.s"
+	@echo "... Game.o"
+	@echo "... Game.i"
+	@echo "... Game.s"
 	@echo "... GameFactory.o"
 	@echo "... GameFactory.i"
 	@echo "... GameFactory.s"

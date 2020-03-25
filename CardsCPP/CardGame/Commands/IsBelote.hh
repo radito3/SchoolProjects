@@ -2,30 +2,23 @@
 #define CARDGAME_ISBELOTE_HH
 
 #include <iostream>
-#include <string>
 #include "../Command.hh"
 #include "../GameError.hh"
 
-template <class T>
-class IsBelote : public Command<T> {
-    const char* name = nullptr;
+class IsBelote : public Command {
+    Belote* game_;
 
 public:
-    explicit IsBelote(const char* name) {
-        this->name = name;
-    }
+    explicit IsBelote(Belote* game) : game_(game) {}
 
-    const char* get_name() const noexcept override {
-        return name;
-    }
+    ~IsBelote() override = default;
 
-    void execute(T& game_instance) override {
-        if (!game_instance.is_dealt()) {
+    void execute() override {
+        if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command.");
         }
-        std::cout << game_instance.is_belote() << std::endl;
+        std::cout << std::boolalpha << game_->is_belote() << std::noboolalpha << std::endl;
     }
-
 };
 
 #endif //CARDGAME_ISBELOTE_HH
