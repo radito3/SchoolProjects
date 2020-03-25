@@ -7,7 +7,11 @@ class War : public Game {
     Deck deck_;
     Hand hand_;
 
-    std::unordered_map<std::string, Command *> commands_ = get_available_commands();
+    std::unordered_map<std::string, Command *> commands_ = build_commands();
+
+    std::unordered_map<std::string, Command*> build_commands() const override {
+        return get_common_commands();
+    }
 
 public:
     War() : deck_(ranks), hand_(26) {
@@ -21,8 +25,8 @@ public:
         commands_.clear();
     }
 
-    std::unordered_map<std::string, Command *> get_available_commands() const noexcept override {
-        return get_common_commands();
+    std::unordered_map<std::string, Command *> get_available_commands() const override {
+        return commands_;
     }
 
     Deck &get_deck() override {

@@ -26,6 +26,7 @@ public:
         return power_;
     }
 
+    //FIXME would be better to just overload the << operator on std::ostream
     std::string to_string() const {
         std::stringstream string_stream;
         string_stream << suit_;

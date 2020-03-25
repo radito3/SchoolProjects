@@ -45,6 +45,15 @@ CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Hand.hh
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Santase.hh
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../War.hh
 
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Card.hh
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Command.hh
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Deck.hh
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Game.h
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../GameError.hh
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Hand.hh
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Santase.cpp
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Santase.hh
+
 CMakeFiles/CardGame.dir/main.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/main.cpp.o: ../Command.hh
 CMakeFiles/CardGame.dir/main.cpp.o: ../Deck.hh

@@ -12,6 +12,12 @@
 class Deck {
     std::deque<Card> deck_;
 
+    void check_size() const {
+        if (deck_.empty()) {
+            throw GameError("ERROR: Not enough cards in deck.");
+        }
+    }
+
 public:
     explicit Deck(const std::vector<char> &game_ranks) {
         int power = 0;
@@ -42,16 +48,12 @@ public:
     }
 
     void shuffle() {
-        if (deck_.empty()) {
-            throw GameError("ERROR: Not enough cards in deck.");
-        }
+        check_size();
         std::shuffle(deck_.begin(), deck_.end(), std::mt19937(std::random_device()()));
     }
 
     void sort() {
-        if (deck_.empty()) {
-            throw GameError("ERROR: Not enough cards in deck.");
-        }
+        check_size();
         std::sort(deck_.begin(), deck_.end(), [&](const Card& x, const Card& y) -> bool {
             return x.get_power() < y.get_power();
         });
@@ -74,16 +76,12 @@ public:
     }
 
     const Card &get_top_card() const {
-        if (deck_.empty()) {
-            throw GameError("ERROR: Not enough cards in deck.");
-        }
+        check_size();
         return deck_.back();
     }
 
     const Card &get_bottom_card() const {
-        if (deck_.empty()) {
-            throw GameError("ERROR: Not enough cards in deck.");
-        }
+        check_size();
         return deck_.front();
     }
 };

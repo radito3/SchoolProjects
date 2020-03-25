@@ -16,7 +16,9 @@ public:
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");
         }
-        std::cout << game_->get_hand().draw_highest().to_string() << std::endl;
+        const Card* highest = game_->get_hand().draw_highest();
+        std::cout << highest->to_string() << std::endl;
+        delete highest;
     }
 };
 

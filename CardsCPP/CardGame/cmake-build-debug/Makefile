@@ -231,6 +231,33 @@ GameFactory.cpp.s:
 	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/GameFactory.cpp.s
 .PHONY : GameFactory.cpp.s
 
+Santase.o: Santase.cpp.o
+
+.PHONY : Santase.o
+
+# target to build an object file
+Santase.cpp.o:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Santase.cpp.o
+.PHONY : Santase.cpp.o
+
+Santase.i: Santase.cpp.i
+
+.PHONY : Santase.i
+
+# target to preprocess a source file
+Santase.cpp.i:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Santase.cpp.i
+.PHONY : Santase.cpp.i
+
+Santase.s: Santase.cpp.s
+
+.PHONY : Santase.s
+
+# target to generate assembly for a file
+Santase.cpp.s:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Santase.cpp.s
+.PHONY : Santase.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -279,6 +306,9 @@ help:
 	@echo "... GameFactory.o"
 	@echo "... GameFactory.i"
 	@echo "... GameFactory.s"
+	@echo "... Santase.o"
+	@echo "... Santase.i"
+	@echo "... Santase.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

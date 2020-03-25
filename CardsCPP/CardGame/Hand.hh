@@ -9,13 +9,17 @@
 
 class Hand {
     const int hand_size_;
-    //TODO handle garbage collection properly (worst case - use std::unique_ptr<Card>)
-    // changed from Card to Card* because set.erase() invalidates references
     std::set<Card *, card_compare> hand_;
-    bool is_dealt_;
+    bool dealt_;
+
+    void check_size() const {
+        if (hand_.empty()) {
+            throw GameError("ERROR: Not enough cards in hand.");
+        }
+    }
 
 public:
-    explicit Hand(int size) : hand_size_(size), is_dealt_(false) {}
+    explicit Hand(int size) : hand_size_(size), dealt_(false) {}
 
     Hand(const Hand &hand) = delete;
 
@@ -29,14 +33,14 @@ public:
         clear();
     }
 
-    bool matching_suits_on_Q_K(const char suit) {
+    bool matching_suits_on_Q_K(const char suit) const {
         int matching = std::count_if(hand_.begin(), hand_.end(), [&](const Card *card) -> bool {
             return card->get_suit() == suit && (card->get_rank() == 'Q' || card->get_rank() == 'K');
         });
         return matching == 2;
     }
 
-    int adjacent_cards_of_a_suit(const char suit) {
+    int adjacent_cards_of_a_suit(const char suit) const {
         auto first_of_a_suit = std::find_if(hand_.begin(), hand_.end(), [&](const Card *card) -> bool {
             return card->get_suit() == suit;
         });
@@ -63,7 +67,7 @@ public:
         for (size_t i = 0; i < hand_size_; i++) {
             hand_.insert(new Card(deck.draw_top_card()));
         }
-        is_dealt_ = true;
+        dealt_ = true;
     }
 
     void print() const {
@@ -74,7 +78,7 @@ public:
     }
 
     bool is_dealt() const {
-        return is_dealt_;
+        return dealt_;
     }
 
     size_t size() const {
@@ -82,35 +86,29 @@ public:
     }
 
     void clear() {
-        is_dealt_ = false;
-        for (auto card : hand_) {
+        dealt_ = false;
+        for (const Card *card : hand_) {
             delete card;
         }
         hand_.clear();
     }
 
-    const Card &draw_first() {
-        if (hand_.empty()) {
-            throw GameError("ERROR: Not enough cards in hand.");
-        }
+    const Card *draw_first() {
+        check_size();
         const Card *first = *hand_.begin();
         hand_.erase(hand_.begin());
-        return *first;
+        return first;
     }
 
-    const Card &draw_highest() {
-        if (hand_.empty()) {
-            throw GameError("ERROR: Not enough cards in hand.");
-        }
+    const Card *draw_highest() {
+        check_size();
         const Card *last = *--hand_.end();
         hand_.erase(--hand_.end());
-        return *last;
+        return last;
     }
 
-    const Card *get_highest_of_suit(char suit) {
-        if (hand_.empty()) {
-            throw GameError("ERROR: Not enough cards in hand.");
-        }
+    const Card *get_highest_of_suit(char suit) const {
+        check_size();
 
         if (std::none_of(hand_.begin(), hand_.end(), [&](const Card *card) -> bool {
             return card->get_suit() == suit;
@@ -118,12 +116,10 @@ public:
             return nullptr;
         }
 
-        auto highest = std::max_element(hand_.begin(), hand_.end(),
-                                        [&](const Card *largest, const Card *current) -> bool {
-                                            return current->get_suit() == suit && card_compare()(largest, current);
-                                        });
-
-        return *highest;
+        return *std::max_element(hand_.begin(), hand_.end(),
+                                 [&](const Card *largest, const Card *current) -> bool {
+                                     return current->get_suit() == suit && card_compare()(largest, current);
+                                 });
     }
 };
 

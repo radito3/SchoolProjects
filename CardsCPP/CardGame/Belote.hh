@@ -15,9 +15,11 @@ class Belote : public Game {
     Deck deck_;
     Hand hand_;
 
-    std::unordered_map<std::string, Command *> commands_ = get_available_commands();
+    std::unordered_map<std::string, Command *> commands_ = build_commands();
 
-    bool n_adjacent_cards_of_a_suit(int n) {
+    std::unordered_map<std::string, Command *> build_commands() const override;
+
+    bool n_adjacent_cards_of_a_suit(int n) const {
         for (const char suit : suits) {
             if (hand_.adjacent_cards_of_a_suit(suit) == n) {
                 return true;
@@ -38,7 +40,9 @@ public:
         commands_.clear();
     }
 
-    std::unordered_map<std::string, Command *> get_available_commands() const noexcept override;
+    std::unordered_map<std::string, Command *> get_available_commands() const override {
+        return commands_;
+    }
 
     Deck &get_deck() override {
         return deck_;
@@ -48,7 +52,7 @@ public:
         return hand_;
     }
 
-    void print_highest_of_suit(char suit) {
+    void print_highest_of_suit(char suit) const {
         const Card* highest = hand_.get_highest_of_suit(suit);
 
         if (highest == nullptr) {
@@ -58,7 +62,7 @@ public:
         }
     }
 
-    bool is_belote() {
+    bool is_belote() const {
         for (const char suit : suits) {
             if (hand_.matching_suits_on_Q_K(suit)) {
                 return true;
@@ -67,15 +71,15 @@ public:
         return false;
     }
 
-    bool is_tierce() {
+    bool is_tierce() const {
         return n_adjacent_cards_of_a_suit(3);
     }
 
-    bool is_quarte() {
+    bool is_quarte() const {
         return n_adjacent_cards_of_a_suit(4);
     }
 
-    bool is_quint() {
+    bool is_quint() const {
         return n_adjacent_cards_of_a_suit(5);
     }
 };
