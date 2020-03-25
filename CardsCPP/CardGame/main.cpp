@@ -34,15 +34,13 @@ vector<string> get_input_commands(const char *input) {
 }
 
 void play(Game *game, const vector<string> &commands) {
-    unordered_map<string, Command *> game_commands = game->get_available_commands();
+    Commands game_commands = game->get_available_commands();
 
     for (size_t i = 1; i < commands.size(); i++) {
         string command = commands[i];
-        auto game_command = game_commands.find(command);
-
-        if (game_command == game_commands.end()) {
+        if (!game_commands.is_valid_command(command)) {
             throw GameError("ERROR: Unknown command.");
         }
-        game_command->second->execute();
+        game_commands.get_command(command)->execute();
     }
 }

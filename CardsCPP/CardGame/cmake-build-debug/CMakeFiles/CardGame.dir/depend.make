@@ -5,7 +5,11 @@ CMakeFiles/CardGame.dir/Belote.cpp.o: ../Belote.cpp
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Belote.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Command.hh
+CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands.h
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/IsBelote.hh
+CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/IsQuarte.h
+CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/IsQuint.h
+CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/IsTierce.h
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Deck.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Game.h
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../GameError.hh
@@ -16,6 +20,7 @@ CMakeFiles/CardGame.dir/Command.cpp.o: ../Command.hh
 
 CMakeFiles/CardGame.dir/Game.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/Game.cpp.o: ../Command.hh
+CMakeFiles/CardGame.dir/Game.cpp.o: ../Commands.h
 CMakeFiles/CardGame.dir/Game.cpp.o: ../Commands/BottomCard.hh
 CMakeFiles/CardGame.dir/Game.cpp.o: ../Commands/Deal.hh
 CMakeFiles/CardGame.dir/Game.cpp.o: ../Commands/DrawBottomCard.hh
@@ -36,6 +41,7 @@ CMakeFiles/CardGame.dir/Game.cpp.o: ../Hand.hh
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Belote.hh
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Command.hh
+CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Commands.h
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Deck.hh
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../Game.h
 CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../GameError.hh
@@ -47,6 +53,7 @@ CMakeFiles/CardGame.dir/GameFactory.cpp.o: ../War.hh
 
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Command.hh
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Commands.h
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Deck.hh
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Game.h
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../GameError.hh
@@ -56,6 +63,7 @@ CMakeFiles/CardGame.dir/Santase.cpp.o: ../Santase.hh
 
 CMakeFiles/CardGame.dir/main.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/main.cpp.o: ../Command.hh
+CMakeFiles/CardGame.dir/main.cpp.o: ../Commands.h
 CMakeFiles/CardGame.dir/main.cpp.o: ../Deck.hh
 CMakeFiles/CardGame.dir/main.cpp.o: ../Game.h
 CMakeFiles/CardGame.dir/main.cpp.o: ../GameError.hh

@@ -15,13 +15,11 @@ class Belote : public Game {
     Deck deck_;
     Hand hand_;
 
-    std::unordered_map<std::string, Command *> commands_ = build_commands();
-
-    std::unordered_map<std::string, Command *> build_commands() const override;
+    std::unordered_map<std::string, Command *> get_commands() const;
 
     bool n_adjacent_cards_of_a_suit(int n) const {
         for (const char suit : suits) {
-            if (hand_.adjacent_cards_of_a_suit(suit) == n) {
+            if (hand_.adjacent_cards_of_a_suit(suit) >= n) {
                 return true;
             }
         }
@@ -33,15 +31,10 @@ public:
         deck_.print();
     }
 
-    ~Belote() override {
-        for (const auto& pair : commands_) {
-            delete pair.second;
-        }
-        commands_.clear();
-    }
+    ~Belote() override = default;
 
-    std::unordered_map<std::string, Command *> get_available_commands() const override {
-        return commands_;
+    Commands get_available_commands() const override {
+        return Commands(get_commands());
     }
 
     Deck &get_deck() override {

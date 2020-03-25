@@ -12,33 +12,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fb71a37-bf18-4f90-aca3-62b04c249f74" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Santase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands/IsQuarte.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands/IsQuint.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands/IsTierce.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Belote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Belote.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Belote.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Belote.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Card.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Card.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/Highest.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/Highest.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands/PlayCard.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Commands/PlayCard.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deck.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Deck.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hand.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Hand.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Santase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Santase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Santase.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Santase.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/War.hh" beforeDir="false" afterPath="$PROJECT_DIR$/War.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Belote.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Belote.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Game.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Game.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/GameFactory.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/GameFactory.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Santase.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Santase.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CardGame.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CardGame.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +88,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/rivanov/CLionProjects/CardGame/main.cpp" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -105,7 +102,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CardGame" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Belote.deal.play_card.play_card.play_card.play_card.play_card" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardGame" TARGET_NAME="CardGame" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CardGame" RUN_TARGET_NAME="CardGame">
+    <configuration name="CardGame" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Belote.deal.deal.deal.deal.belote?.tierce?.quarte?.quint?" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardGame" TARGET_NAME="CardGame" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CardGame" RUN_TARGET_NAME="CardGame">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -144,6 +141,7 @@
       <workItem from="1585057920293" duration="4396000" />
       <workItem from="1585122728284" duration="16291000" />
       <workItem from="1585147093007" duration="4159000" />
+      <workItem from="1585154856184" duration="6790000" />
     </task>
     <servers />
   </component>
@@ -155,14 +153,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="553" y="179" key="#New_File_Extensions/0.0.1920.1040@0.0.1920.1040" timestamp="1584976169671" />
-    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585149098601">
+    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585158632383">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585149098601" />
-    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1585134175730">
+    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585158632383" />
+    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1585155402931">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585134175730" />
+    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585155402931" />
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585134049601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -171,26 +169,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584975082089" />
-    <state width="1878" height="289" key="GridCell.Tab.0.bottom" timestamp="1585151256125">
+    <state width="1878" height="289" key="GridCell.Tab.0.bottom" timestamp="1585164594616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585151256125" />
-    <state width="1878" height="289" key="GridCell.Tab.0.center" timestamp="1585151256125">
+    <state width="1878" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585164594616" />
+    <state width="1878" height="289" key="GridCell.Tab.0.center" timestamp="1585164594615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585151256125" />
-    <state width="1878" height="289" key="GridCell.Tab.0.left" timestamp="1585151256124">
+    <state width="1878" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585164594615" />
+    <state width="1878" height="289" key="GridCell.Tab.0.left" timestamp="1585164594615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585151256124" />
-    <state width="1878" height="289" key="GridCell.Tab.0.right" timestamp="1585151256125">
+    <state width="1878" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585164594615" />
+    <state width="1878" height="289" key="GridCell.Tab.0.right" timestamp="1585164594616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585151256125" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585147097664">
+    <state width="1878" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585164594616" />
+    <state width="1878" height="347" key="GridCell.Tab.1.bottom" timestamp="1585158708253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585147097664" />
+    <state width="1878" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585158708253" />
+    <state width="1878" height="347" key="GridCell.Tab.1.center" timestamp="1585158708253">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585158708253" />
+    <state width="1878" height="347" key="GridCell.Tab.1.left" timestamp="1585158708253">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585158708253" />
+    <state width="1878" height="347" key="GridCell.Tab.1.right" timestamp="1585158708253">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1878" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585158708253" />
+    <state x="462" y="163" key="SettingsEditor" timestamp="1585158298879">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="462" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585158298879" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585154865663">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585154865663" />
     <state x="703" y="164" key="refactoring.ChangeSignatureDialog" timestamp="1585129433239">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -199,10 +217,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="622" y="245" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585141951914" />
-    <state x="623" y="226" width="672" height="678" key="search.everywhere.popup" timestamp="1585050864571">
+    <state x="625" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1585163902856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="226" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585050864571" />
+    <state x="625" y="228" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585163902856" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -211,19 +229,5 @@
         <watch expression="hand_" language="ObjectiveC" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="watch">
-      <expression>
-        <expression-string>hand_</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>deck_</expression-string>
-        <language-id>ObjectiveC</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
 </project>

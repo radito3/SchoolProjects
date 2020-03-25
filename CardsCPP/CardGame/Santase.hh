@@ -14,24 +14,17 @@ class Santase : public Game {
     Deck deck_;
     Hand hand_;
 
-    std::unordered_map<std::string, Command *> commands_ = build_commands();
-
-    std::unordered_map<std::string, Command *> build_commands() const override;
+    std::unordered_map<std::string, Command *> get_commands() const;
 
 public:
     Santase() : deck_(santase_ranks), hand_(6) {
         deck_.print();
     }
 
-    ~Santase() override {
-        for (const auto& pair : commands_) {
-            delete pair.second;
-        }
-        commands_.clear();
-    }
+    ~Santase() override = default;
 
-    std::unordered_map<std::string, Command*> get_available_commands() const override {
-        return commands_;
+    Commands get_available_commands() const override {
+        return Commands(get_commands());
     }
 
     Deck& get_deck() override {

@@ -9,13 +9,23 @@
 
 class Hand {
     const int hand_size_;
-    std::set<Card *, card_compare> hand_;
+    std::set<Card *, sort_by_power> hand_;
     bool dealt_;
 
     void check_size() const {
         if (hand_.empty()) {
             throw GameError("ERROR: Not enough cards in hand.");
         }
+    }
+
+    struct sort_by_rank : public std::binary_function<Card *, Card *, bool> {
+        bool operator()(const Card *x, const Card *y) const {
+            return get_index_of_rank(x->get_rank()) < get_index_of_rank(y->get_rank());
+        }
+    };
+
+    static long get_index_of_rank(const char rank) {
+        return std::distance(ranks.begin(), std::find(ranks.begin(), ranks.end(), rank));
     }
 
 public:
@@ -41,23 +51,11 @@ public:
     }
 
     int adjacent_cards_of_a_suit(const char suit) const {
-        auto first_of_a_suit = std::find_if(hand_.begin(), hand_.end(), [&](const Card *card) -> bool {
+        std::set<Card *, sort_by_rank> temp(hand_.begin(), hand_.end());
+
+        return std::count_if(temp.begin(), temp.end(), [&](const Card *card) -> bool {
             return card->get_suit() == suit;
         });
-
-        if (first_of_a_suit == hand_.end()) {
-            return 0;
-        }
-
-        int pow = (*first_of_a_suit)->get_power(), num_cards = 1;
-
-        for (auto it = first_of_a_suit; it != hand_.end(); it++) {
-            if ((*it)->get_power() == (pow + 1)) {
-                pow++;
-                num_cards++;
-            }
-        }
-        return num_cards;
     }
 
     void deal(Deck &deck) {
@@ -118,7 +116,7 @@ public:
 
         return *std::max_element(hand_.begin(), hand_.end(),
                                  [&](const Card *largest, const Card *current) -> bool {
-                                     return current->get_suit() == suit && card_compare()(largest, current);
+                                     return current->get_suit() == suit && sort_by_power()(largest, current);
                                  });
     }
 };

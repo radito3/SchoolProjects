@@ -6,7 +6,11 @@ CMakeFiles/CardGame.dir/Belote.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsBelote.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsQuarte.h
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsQuint.h
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsTierce.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Deck.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh
@@ -17,6 +21,7 @@ CMakeFiles/CardGame.dir/Command.cpp.o
 CMakeFiles/CardGame.dir/Game.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/BottomCard.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/Deal.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/DrawBottomCard.hh
@@ -37,6 +42,7 @@ CMakeFiles/CardGame.dir/GameFactory.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Deck.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh
@@ -48,6 +54,7 @@ CMakeFiles/CardGame.dir/GameFactory.cpp.o
 CMakeFiles/CardGame.dir/Santase.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Deck.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh
@@ -57,6 +64,7 @@ CMakeFiles/CardGame.dir/Santase.cpp.o
 CMakeFiles/CardGame.dir/main.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Deck.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh

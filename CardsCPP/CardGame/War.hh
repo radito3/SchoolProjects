@@ -7,26 +7,15 @@ class War : public Game {
     Deck deck_;
     Hand hand_;
 
-    std::unordered_map<std::string, Command *> commands_ = build_commands();
-
-    std::unordered_map<std::string, Command*> build_commands() const override {
-        return get_common_commands();
-    }
-
 public:
     War() : deck_(ranks), hand_(26) {
         deck_.print();
     }
 
-    ~War() override {
-        for (const auto& pair : commands_) {
-            delete pair.second;
-        }
-        commands_.clear();
-    }
+    ~War() override = default;
 
-    std::unordered_map<std::string, Command *> get_available_commands() const override {
-        return commands_;
+    Commands get_available_commands() const override {
+        return Commands(get_common_commands());
     }
 
     Deck &get_deck() override {

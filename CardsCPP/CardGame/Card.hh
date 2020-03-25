@@ -42,7 +42,7 @@ public:
 const char suits[4] = {'C', 'D', 'H', 'S'};
 const std::vector<char> ranks = {'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
 
-struct card_compare : public std::binary_function<Card *, Card *, bool> {
+struct sort_by_power : public std::binary_function<Card *, Card *, bool> {
     bool operator()(const Card *x, const Card *y) const {
         return x->get_power() < y->get_power();
     }

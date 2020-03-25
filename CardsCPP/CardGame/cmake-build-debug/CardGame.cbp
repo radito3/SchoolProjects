@@ -95,6 +95,9 @@
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh">
 			<Option target="CardGame"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h">
+			<Option target="CardGame"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/BottomCard.hh">
 			<Option target="CardGame"/>
 		</Unit>
@@ -111,6 +114,15 @@
 			<Option target="CardGame"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsBelote.hh">
+			<Option target="CardGame"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsQuarte.h">
+			<Option target="CardGame"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsQuint.h">
+			<Option target="CardGame"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsTierce.h">
 			<Option target="CardGame"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/PlayCard.hh">
