@@ -12,19 +12,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fb71a37-bf18-4f90-aca3-62b04c249f74" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Commands/HighestOfSuit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands/IsFourty.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Commands/IsTwenty.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Belote.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Belote.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Belote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Belote.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commands.h" beforeDir="false" afterPath="$PROJECT_DIR$/Commands.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deck.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Deck.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFactory.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameFactory.h" beforeDir="false" afterPath="$PROJECT_DIR$/GameFactory.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Card.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Card.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hand.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Hand.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Santase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Santase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Santase.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Santase.hh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CardGame.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CardGame.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe.stackdump" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe.stackdump" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +48,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/rivanov/CLionProjects/CardGame/main.cpp" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -65,7 +67,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CardGame" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Belote.deal.deal.deal.deal.belote?.tierce?.quarte?.quint?" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardGame" TARGET_NAME="CardGame" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CardGame" RUN_TARGET_NAME="CardGame">
+    <configuration name="CardGame" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Santase.deal.deal.twenty?:clubs.fourty?:hearts" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardGame" TARGET_NAME="CardGame" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CardGame" RUN_TARGET_NAME="CardGame">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -106,6 +108,7 @@
       <workItem from="1585147093007" duration="4159000" />
       <workItem from="1585154856184" duration="8284000" />
       <workItem from="1585207030856" duration="9572000" />
+      <workItem from="1585224727532" duration="13317000" />
     </task>
     <servers />
   </component>
@@ -117,14 +120,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="553" y="179" key="#New_File_Extensions/0.0.1920.1040@0.0.1920.1040" timestamp="1584976169671" />
-    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585208837812">
+    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585238779990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585208837812" />
-    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1585155402931">
+    <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585238779990" />
+    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1585225658314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585155402931" />
+    <state x="766" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585225658314" />
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585134049601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -133,22 +136,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584975082089" />
-    <state width="1878" height="289" key="GridCell.Tab.0.bottom" timestamp="1585216611886">
+    <state width="1878" height="289" key="GridCell.Tab.0.bottom" timestamp="1585239276385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585216611886" />
-    <state width="1878" height="289" key="GridCell.Tab.0.center" timestamp="1585216611886">
+    <state width="1878" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585239276385" />
+    <state width="1878" height="289" key="GridCell.Tab.0.center" timestamp="1585239276385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585216611886" />
-    <state width="1878" height="289" key="GridCell.Tab.0.left" timestamp="1585216611886">
+    <state width="1878" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585239276385" />
+    <state width="1878" height="289" key="GridCell.Tab.0.left" timestamp="1585239276385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585216611886" />
-    <state width="1878" height="289" key="GridCell.Tab.0.right" timestamp="1585216611886">
+    <state width="1878" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585239276385" />
+    <state width="1878" height="289" key="GridCell.Tab.0.right" timestamp="1585239276385">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585216611886" />
+    <state width="1878" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585239276385" />
     <state width="1878" height="347" key="GridCell.Tab.1.bottom" timestamp="1585166209215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -169,18 +172,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="462" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585158298879" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585207176725">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585224730595">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585207176725" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585224730595" />
     <state x="703" y="164" key="refactoring.ChangeSignatureDialog" timestamp="1585129433239">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="703" y="164" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585129433239" />
-    <state x="624" y="247" key="run.anything.popup" timestamp="1585209976396">
+    <state x="625" y="248" key="run.anything.popup" timestamp="1585228637801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="624" y="247" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585209976396" />
+    <state x="625" y="248" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585228637801" />
     <state x="625" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1585163902856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

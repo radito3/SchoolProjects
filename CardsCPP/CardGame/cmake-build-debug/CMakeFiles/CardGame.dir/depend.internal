@@ -7,6 +7,7 @@ CMakeFiles/CardGame.dir/Belote.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/HighestOfSuit.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsBelote.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsQuarte.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsQuint.h
@@ -42,6 +43,8 @@ CMakeFiles/CardGame.dir/Santase.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsFourty.h
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsTwenty.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Deck.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh

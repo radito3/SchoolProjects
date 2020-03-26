@@ -11,7 +11,7 @@ void play(Game *, const vector<string> &);
 int main(int argc, char *argv[]) {
     vector<string> commands = get_input_commands(argv[1]);
 
-    Game* game = nullptr;
+    Game *game = nullptr;
     try {
         game = GameFactory::create_game(commands[0]);
         play(game, commands);

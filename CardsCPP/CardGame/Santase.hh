@@ -3,12 +3,11 @@
 
 #include "Command.hh"
 #include "Game.h"
-#include <algorithm>
 #include <bitset>
 #include <unordered_map>
 
 class Santase : public Game {
-    const std::vector<char> santase_ranks = {'9', 'J', 'Q', 'K', 'T', 'A' };
+    const std::vector<char> santase_ranks = {'9', 'J', 'Q', 'K', 'T', 'A'};
 
     Deck deck_;
     Hand hand_;
@@ -26,21 +25,21 @@ public:
         return Commands(get_commands());
     }
 
-    Deck& get_deck() override {
+    Deck &get_deck() override {
         return deck_;
     }
 
-    Hand& get_hand() override {
+    Hand &get_hand() override {
         return hand_;
     }
 
-    bool twenty(char suit) {
+    bool is_twenty(char suit) {
         size_t pos = 0;
         bool same_suit = false;
         std::bitset<3> diff_suit;
 
         for (const char s : suits) {
-            bool matching_suits_on_Q_K = hand_.matching_suits_on_Q_K(suit);
+            bool matching_suits_on_Q_K = hand_.matching_suits_on_Q_K(s);
             if (s == suit) {
                 same_suit = matching_suits_on_Q_K;
             } else {
@@ -51,7 +50,7 @@ public:
         return !same_suit && diff_suit.any();
     }
 
-    bool fourty(char suit) {
+    bool is_fourty(char suit) {
         return hand_.matching_suits_on_Q_K(suit);
     }
 };

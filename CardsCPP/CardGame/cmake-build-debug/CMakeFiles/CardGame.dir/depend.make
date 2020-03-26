@@ -6,6 +6,7 @@ CMakeFiles/CardGame.dir/Belote.cpp.o: ../Belote.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Command.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands.h
+CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/HighestOfSuit.h
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/IsBelote.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/IsQuarte.h
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Commands/IsQuint.h
@@ -41,6 +42,8 @@ CMakeFiles/CardGame.dir/Game.cpp.o: ../Hand.hh
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Command.hh
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Commands.h
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Commands/IsFourty.h
+CMakeFiles/CardGame.dir/Santase.cpp.o: ../Commands/IsTwenty.h
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Deck.hh
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../Game.h
 CMakeFiles/CardGame.dir/Santase.cpp.o: ../GameError.hh

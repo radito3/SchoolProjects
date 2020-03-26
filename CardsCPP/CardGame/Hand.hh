@@ -8,8 +8,16 @@
 #include <iostream>
 
 class Hand {
-    const int hand_size_;
+
+    struct sort_by_power : public std::binary_function<Card *, Card *, bool> {
+        bool operator()(const Card *x, const Card *y) const {
+            return x->get_power() < y->get_power();
+        }
+    };
+
     std::set<Card *, sort_by_power> hand_;
+
+    const int hand_size_;
     bool dealt_;
 
     void check_size() const {
@@ -18,22 +26,26 @@ class Hand {
         }
     }
 
-    struct sort_by_rank : public std::binary_function<Card *, Card *, bool> {
-        bool operator()(const Card *x, const Card *y) const {
-            return get_index_of_rank(x) < get_index_of_rank(y);
-        }
-    };
-
-    static int get_index_of_rank(const Card *card) {
+    static int index_of_rank(const char rank) {
         int index = 0;
         for (const char r : ranks) {
-            if (r == card->get_rank()) {
+            if (r == rank) {
                 return index;
             }
             index++;
         }
         return -1;
     }
+
+    struct adjacent_rank_finder : public std::unary_function<Card *, bool> {
+        const char rank;
+
+        explicit adjacent_rank_finder(const char rank) : rank(rank) {}
+
+        bool operator()(const Card *card) {
+            return (index_of_rank(card->get_rank()) - index_of_rank(rank)) == 1;
+        }
+    };
 
 public:
     explicit Hand(int size) : hand_size_(size), dealt_(false) {}
@@ -58,22 +70,31 @@ public:
     }
 
     int adjacent_cards_of_a_suit(const char suit) const {
-        std::set<Card *, sort_by_rank> temp;
-        int num_cards = 0;
+        Card **temp = new Card *[hand_.size()];
 
-        for (auto card : hand_) {
-            if (card->get_suit() == suit) {
-                temp.insert(card);
-            }
+        auto end = std::copy_if(hand_.begin(), hand_.end(), temp, [&](const Card *card) -> bool {
+            return card->get_suit() == suit;
+        });
+
+        if (temp == end) {
+            delete[] temp;
+            return 0;
         }
 
-        auto prev = temp.begin();
-        for (auto it = ++temp.begin(); it != temp.end(); it++, prev++) {
-            if ((get_index_of_rank(*it) - get_index_of_rank(*prev)) == 1) {
-                num_cards++;
-            }
+        auto min_by_rank = std::min_element(temp, end, [&](const Card *next, const Card *min) -> bool {
+            return index_of_rank(next->get_rank()) < index_of_rank(min->get_rank());
+        });
+
+        int num_cards = 1;
+        char rank = (*min_by_rank)->get_rank();
+        Card **next_of_rank;
+
+        while ((next_of_rank = std::find_if(temp, end, adjacent_rank_finder(rank))) != end) {
+            num_cards++;
+            rank = (*next_of_rank)->get_rank();
         }
 
+        delete[] temp;
         return num_cards;
     }
 
@@ -126,16 +147,14 @@ public:
     const Card *get_highest_of_suit(char suit) const {
         check_size();
 
-        if (std::none_of(hand_.begin(), hand_.end(), [&](const Card *card) -> bool {
-            return card->get_suit() == suit;
-        })) {
+        auto highest = *std::max_element(hand_.begin(), hand_.end(),
+                                         [&](const Card *largest, const Card *current) -> bool {
+                                             return current->get_suit() == suit && sort_by_power()(largest, current);
+                                         });
+        if (highest->get_suit() != suit) {
             return nullptr;
         }
-
-        return *std::max_element(hand_.begin(), hand_.end(),
-                                 [&](const Card *largest, const Card *current) -> bool {
-                                     return current->get_suit() == suit && sort_by_power()(largest, current);
-                                 });
+        return highest;
     }
 };
 

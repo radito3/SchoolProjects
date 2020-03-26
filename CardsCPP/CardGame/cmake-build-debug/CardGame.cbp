@@ -113,7 +113,13 @@
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/Highest.hh">
 			<Option target="CardGame"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/HighestOfSuit.h">
+			<Option target="CardGame"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsBelote.hh">
+			<Option target="CardGame"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsFourty.h">
 			<Option target="CardGame"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsQuarte.h">
@@ -123,6 +129,9 @@
 			<Option target="CardGame"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsTierce.h">
+			<Option target="CardGame"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/IsTwenty.h">
 			<Option target="CardGame"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands/PlayCard.hh">
