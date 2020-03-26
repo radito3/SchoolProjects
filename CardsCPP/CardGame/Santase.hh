@@ -1,7 +1,6 @@
 #ifndef CARDGAME_SANTASE_HH
 #define CARDGAME_SANTASE_HH
 
-#include "Hand.hh"
 #include "Command.hh"
 #include "Game.h"
 #include <algorithm>

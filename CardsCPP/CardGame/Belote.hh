@@ -1,8 +1,6 @@
 #ifndef CARDGAME_BELOTE_HH
 #define CARDGAME_BELOTE_HH
 
-#include "Hand.hh"
-#include "Card.hh"
 #include "Command.hh"
 #include "Game.h"
 #include <unordered_map>

@@ -36,9 +36,7 @@ public:
 
     Deck &operator=(Deck &&deck) = delete;
 
-    ~Deck() {
-        deck_.clear();
-    }
+    ~Deck() = default;
 
     void print() const {
         for (const Card &it : deck_) {

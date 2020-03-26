@@ -20,12 +20,19 @@ class Hand {
 
     struct sort_by_rank : public std::binary_function<Card *, Card *, bool> {
         bool operator()(const Card *x, const Card *y) const {
-            return get_index_of_rank(x->get_rank()) < get_index_of_rank(y->get_rank());
+            return get_index_of_rank(x) < get_index_of_rank(y);
         }
     };
 
-    static long get_index_of_rank(const char rank) {
-        return std::distance(ranks.begin(), std::find(ranks.begin(), ranks.end(), rank));
+    static int get_index_of_rank(const Card *card) {
+        int index = 0;
+        for (const char r : ranks) {
+            if (r == card->get_rank()) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
 public:
@@ -51,11 +58,23 @@ public:
     }
 
     int adjacent_cards_of_a_suit(const char suit) const {
-        std::set<Card *, sort_by_rank> temp(hand_.begin(), hand_.end());
+        std::set<Card *, sort_by_rank> temp;
+        int num_cards = 0;
 
-        return std::count_if(temp.begin(), temp.end(), [&](const Card *card) -> bool {
-            return card->get_suit() == suit;
-        });
+        for (auto card : hand_) {
+            if (card->get_suit() == suit) {
+                temp.insert(card);
+            }
+        }
+
+        auto prev = temp.begin();
+        for (auto it = ++temp.begin(); it != temp.end(); it++, prev++) {
+            if ((get_index_of_rank(*it) - get_index_of_rank(*prev)) == 1) {
+                num_cards++;
+            }
+        }
+
+        return num_cards;
     }
 
     void deal(Deck &deck) {
@@ -88,7 +107,6 @@ public:
         for (const Card *card : hand_) {
             delete card;
         }
-        hand_.clear();
     }
 
     const Card *draw_first() {

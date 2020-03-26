@@ -23,10 +23,6 @@ unordered_map
 -
 
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh
-Hand.hh
-/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
-Card.hh
-/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
 Command.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
 Game.h
@@ -204,8 +200,6 @@ Commands.h
 exception
 -
 
-/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameFactory.cpp
-GameFactory.h
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameFactory.h
 War.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/War.hh
@@ -213,10 +207,6 @@ Belote.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh
 Santase.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.hh
-
-/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameFactory.h
-Game.h
-/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
 
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
 GameError.hh
@@ -226,6 +216,8 @@ Deck.hh
 set
 -
 algorithm
+-
+numeric
 -
 iostream
 -
@@ -239,8 +231,6 @@ unordered_map
 -
 
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.hh
-Hand.hh
-/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
 Command.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
 Game.h

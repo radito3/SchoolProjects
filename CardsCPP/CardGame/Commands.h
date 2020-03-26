@@ -26,7 +26,6 @@ public:
         for (const auto &pair : commands_) {
             delete pair.second;
         }
-        commands_.clear();
     }
 
     bool is_valid_command(const std::string& command) {

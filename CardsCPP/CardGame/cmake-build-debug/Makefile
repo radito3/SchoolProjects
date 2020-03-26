@@ -204,33 +204,6 @@ Game.cpp.s:
 	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Game.cpp.s
 .PHONY : Game.cpp.s
 
-GameFactory.o: GameFactory.cpp.o
-
-.PHONY : GameFactory.o
-
-# target to build an object file
-GameFactory.cpp.o:
-	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/GameFactory.cpp.o
-.PHONY : GameFactory.cpp.o
-
-GameFactory.i: GameFactory.cpp.i
-
-.PHONY : GameFactory.i
-
-# target to preprocess a source file
-GameFactory.cpp.i:
-	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/GameFactory.cpp.i
-.PHONY : GameFactory.cpp.i
-
-GameFactory.s: GameFactory.cpp.s
-
-.PHONY : GameFactory.s
-
-# target to generate assembly for a file
-GameFactory.cpp.s:
-	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/GameFactory.cpp.s
-.PHONY : GameFactory.cpp.s
-
 Santase.o: Santase.cpp.o
 
 .PHONY : Santase.o
@@ -303,9 +276,6 @@ help:
 	@echo "... Game.o"
 	@echo "... Game.i"
 	@echo "... Game.s"
-	@echo "... GameFactory.o"
-	@echo "... GameFactory.i"
-	@echo "... GameFactory.s"
 	@echo "... Santase.o"
 	@echo "... Santase.i"
 	@echo "... Santase.s"

@@ -38,19 +38,6 @@ CMakeFiles/CardGame.dir/Game.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
-CMakeFiles/CardGame.dir/GameFactory.cpp.o
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Deck.hh
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameFactory.cpp
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameFactory.h
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.hh
- /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/War.hh
 CMakeFiles/CardGame.dir/Santase.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
@@ -62,6 +49,7 @@ CMakeFiles/CardGame.dir/Santase.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.cpp
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.hh
 CMakeFiles/CardGame.dir/main.cpp.o
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
@@ -70,4 +58,6 @@ CMakeFiles/CardGame.dir/main.cpp.o
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameFactory.h
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.hh
+ /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/War.hh
  /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/main.cpp
