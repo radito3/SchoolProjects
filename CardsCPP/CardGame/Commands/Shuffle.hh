@@ -9,8 +9,6 @@ class Shuffle : public Command {
 public:
     explicit Shuffle(Game *game) : game_(game) {}
 
-    ~Shuffle() override = default;
-
     void execute() override {
         if (game_->get_hand().is_dealt()) {
             game_->get_hand().clear();

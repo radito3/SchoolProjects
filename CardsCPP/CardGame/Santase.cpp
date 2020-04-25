@@ -6,7 +6,7 @@
 #include <unordered_map>
 
 std::unordered_map<std::string, Command *> Santase::get_commands() const {
-    std::unordered_map<std::string, Command*> commands = std::move(get_common_commands());
+    std::unordered_map<std::string, Command *> commands = std::move(get_common_commands());
 
     commands.emplace("fourty?:spades", new IsFourty((Santase *) this, 'S'));
     commands.emplace("fourty?:hearts", new IsFourty((Santase *) this, 'H'));

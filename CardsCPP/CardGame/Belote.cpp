@@ -9,7 +9,7 @@
 #include <unordered_map>
 
 std::unordered_map<std::string, Command *> Belote::get_commands() const {
-    std::unordered_map<std::string, Command*> commands = std::move(get_common_commands());
+    std::unordered_map<std::string, Command *> commands = std::move(get_common_commands());
 
     commands.emplace("highest_of_suit:spades", new HighestOfSuit((Belote *) this, 'S'));
     commands.emplace("highest_of_suit:hearts", new HighestOfSuit((Belote *) this, 'H'));

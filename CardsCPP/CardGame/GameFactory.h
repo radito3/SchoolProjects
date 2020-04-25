@@ -8,7 +8,9 @@
 class GameFactory {
 
 public:
-    static Game* create_game(const std::string& name) {
+    GameFactory() = delete;
+
+    static Game *create_game(const std::string &name) {
         if (name == "War") {
             return new War;
         }
@@ -20,7 +22,6 @@ public:
         }
         throw GameError("ERROR: Unknown command.");
     }
-
 };
 
 #endif //CARDGAME_GAMEFACTORY_H

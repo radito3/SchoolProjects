@@ -9,8 +9,6 @@ class Sort : public Command {
 public:
     explicit Sort(Game *game) : game_(game) {}
 
-    ~Sort() override = default;
-
     void execute() override {
         if (game_->get_hand().is_dealt()) {
             game_->get_hand().clear();

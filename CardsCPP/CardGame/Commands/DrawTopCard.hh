@@ -10,13 +10,11 @@ class DrawTopCard : public Command {
 public:
     explicit DrawTopCard(Game *game) : game_(game) {}
 
-    ~DrawTopCard() override = default;
-
     void execute() override {
         if (game_->get_hand().is_dealt()) {
             game_->get_hand().clear();
         }
-        std::cout << game_->get_deck().draw_top_card().to_string() << std::endl;
+        std::cout << game_->get_deck().draw_top_card() << std::endl;
     }
 };
 

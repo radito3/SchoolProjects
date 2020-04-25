@@ -9,8 +9,6 @@ class Deal : public Command {
 public:
     explicit Deal(Game *game) : game_(game) {}
 
-    ~Deal() override = default;
-
     void execute() override {
         game_->get_hand().deal(game_->get_deck());
         game_->get_hand().print();

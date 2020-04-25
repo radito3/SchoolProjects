@@ -6,13 +6,11 @@
 #include "../GameError.hh"
 
 class IsFourty : public Command {
-    Santase* game_;
+    Santase *game_;
     const char suit_;
 
 public:
-    IsFourty(Santase* game, const char suit) : game_(game), suit_(suit) {}
-
-    ~IsFourty() override = default;
+    IsFourty(Santase *game, const char suit) : game_(game), suit_(suit) {}
 
     void execute() override {
         if (!game_->get_hand().is_dealt()) {

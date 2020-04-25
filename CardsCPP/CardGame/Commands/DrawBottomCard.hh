@@ -5,18 +5,16 @@
 #include "../Command.hh"
 
 class DrawBottomCard : public Command {
-    Game* game_;
+    Game *game_;
 
 public:
-    explicit DrawBottomCard(Game* game) : game_(game) {}
-
-    ~DrawBottomCard() override = default;
+    explicit DrawBottomCard(Game *game) : game_(game) {}
 
     void execute() override {
         if (game_->get_hand().is_dealt()) {
             game_->get_hand().clear();
         }
-        std::cout << game_->get_deck().draw_bottom_card().to_string() << std::endl;
+        std::cout << game_->get_deck().draw_bottom_card() << std::endl;
     }
 };
 

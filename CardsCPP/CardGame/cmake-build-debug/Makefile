@@ -150,32 +150,32 @@ Belote.cpp.s:
 	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Belote.cpp.s
 .PHONY : Belote.cpp.s
 
-Command.o: Command.cpp.o
+Card.o: Card.cpp.o
 
-.PHONY : Command.o
+.PHONY : Card.o
 
 # target to build an object file
-Command.cpp.o:
-	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Command.cpp.o
-.PHONY : Command.cpp.o
+Card.cpp.o:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Card.cpp.o
+.PHONY : Card.cpp.o
 
-Command.i: Command.cpp.i
+Card.i: Card.cpp.i
 
-.PHONY : Command.i
+.PHONY : Card.i
 
 # target to preprocess a source file
-Command.cpp.i:
-	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Command.cpp.i
-.PHONY : Command.cpp.i
+Card.cpp.i:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Card.cpp.i
+.PHONY : Card.cpp.i
 
-Command.s: Command.cpp.s
+Card.s: Card.cpp.s
 
-.PHONY : Command.s
+.PHONY : Card.s
 
 # target to generate assembly for a file
-Command.cpp.s:
-	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Command.cpp.s
-.PHONY : Command.cpp.s
+Card.cpp.s:
+	$(MAKE) -f CMakeFiles/CardGame.dir/build.make CMakeFiles/CardGame.dir/Card.cpp.s
+.PHONY : Card.cpp.s
 
 Game.o: Game.cpp.o
 
@@ -270,9 +270,9 @@ help:
 	@echo "... Belote.o"
 	@echo "... Belote.i"
 	@echo "... Belote.s"
-	@echo "... Command.o"
-	@echo "... Command.i"
-	@echo "... Command.s"
+	@echo "... Card.o"
+	@echo "... Card.i"
+	@echo "... Card.s"
 	@echo "... Game.o"
 	@echo "... Game.i"
 	@echo "... Game.s"

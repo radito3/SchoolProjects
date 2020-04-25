@@ -6,12 +6,10 @@
 #include "../GameError.hh"
 
 class IsTierce : public Command {
-    Belote* game_;
+    Belote *game_;
 
 public:
-    explicit IsTierce(Belote* game) : game_(game) {}
-
-    ~IsTierce() override = default;
+    explicit IsTierce(Belote *game) : game_(game) {}
 
     void execute() override {
         if (!game_->get_hand().is_dealt()) {

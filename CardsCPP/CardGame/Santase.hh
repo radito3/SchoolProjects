@@ -19,8 +19,6 @@ public:
         deck_.print();
     }
 
-    ~Santase() override = default;
-
     Commands get_available_commands() const override {
         return Commands(get_commands());
     }
@@ -33,24 +31,24 @@ public:
         return hand_;
     }
 
-    bool is_twenty(char suit) {
+    bool is_twenty(const char suit) {
         size_t pos = 0;
-        bool same_suit = false;
+        bool trump_suit = false;
         std::bitset<3> diff_suit;
 
         for (const char s : suits) {
-            bool matching_suits_on_Q_K = hand_.matching_suits_on_Q_K(s);
+            bool pair = hand_.matching_suits_on_Q_K(s);
             if (s == suit) {
-                same_suit = matching_suits_on_Q_K;
+                trump_suit = pair;
             } else {
-                diff_suit.set(pos++, matching_suits_on_Q_K);
+                diff_suit.set(pos++, pair);
             }
         }
 
-        return !same_suit && diff_suit.any();
+        return !trump_suit && diff_suit.any();
     }
 
-    bool is_fourty(char suit) {
+    bool is_fourty(const char suit) {
         return hand_.matching_suits_on_Q_K(suit);
     }
 };

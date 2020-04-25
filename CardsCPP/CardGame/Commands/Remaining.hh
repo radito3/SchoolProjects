@@ -5,12 +5,10 @@
 #include "../Command.hh"
 
 class Remaining : public Command {
-    Game* game_;
+    Game *game_;
 
 public:
-    explicit Remaining(Game* game) : game_(game) {}
-
-    ~Remaining() override = default;
+    explicit Remaining(Game *game) : game_(game) {}
 
     void execute() override {
         if (!game_->get_hand().is_dealt()) {

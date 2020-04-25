@@ -10,14 +10,12 @@ class PlayCard : public Command {
 public:
     explicit PlayCard(Game* game) : game_(game) {}
 
-    ~PlayCard() override = default;
-
     void execute() override {
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");
         }
         const Card* first = game_->get_hand().draw_first();
-        std::cout << first->to_string() << std::endl;
+        std::cout << *first << std::endl;
         delete first;
     }
 };

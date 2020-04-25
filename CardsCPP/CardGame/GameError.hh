@@ -4,12 +4,12 @@
 #include <exception>
 
 class GameError : public std::exception {
-    const char* msg_;
+    const char *msg_;
 
 public:
-    explicit GameError(const char* msg) : msg_(msg) {}
+    explicit GameError(const char *msg) : msg_(msg) {}
 
-    const char* what() const noexcept override {
+    const char *what() const noexcept override {
         return msg_;
     }
 };

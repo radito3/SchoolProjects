@@ -12,8 +12,6 @@ class HighestOfSuit : public Command {
 public:
     HighestOfSuit(Belote* game, const char suit) : game_(game), suit_(suit) {}
 
-    ~HighestOfSuit() override = default;
-
     void execute() override {
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command.");

@@ -8,7 +8,7 @@
 #include <vector>
 
 class Belote : public Game {
-    const std::vector<char> belote_ranks = {'7', '8', '9', 'J', 'Q', 'K', 'T', 'A' };
+    const std::vector<char> belote_ranks = {'7', '8', '9', 'J', 'Q', 'K', 'T', 'A'};
 
     Deck deck_;
     Hand hand_;
@@ -29,8 +29,6 @@ public:
         deck_.print();
     }
 
-    ~Belote() override = default;
-
     Commands get_available_commands() const override {
         return Commands(get_commands());
     }
@@ -43,13 +41,13 @@ public:
         return hand_;
     }
 
-    void print_highest_of_suit(char suit) const {
-        const Card* highest = hand_.get_highest_of_suit(suit);
+    void print_highest_of_suit(const char suit) const {
+        const Card *highest = hand_.get_highest_of_suit(suit);
 
         if (highest == nullptr) {
             std::cout << std::endl;
         } else {
-            std::cout << highest->to_string() << std::endl;
+            std::cout << *highest << std::endl;
         }
     }
 

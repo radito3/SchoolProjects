@@ -6,12 +6,10 @@
 #include "../GameError.hh"
 
 class IsQuint : public Command {
-    Belote* game_;
+    Belote *game_;
 
 public:
-    explicit IsQuint(Belote* game) : game_(game) {}
-
-    ~IsQuint() override = default;
+    explicit IsQuint(Belote *game) : game_(game) {}
 
     void execute() override {
         if (!game_->get_hand().is_dealt()) {

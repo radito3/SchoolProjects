@@ -5,12 +5,10 @@
 #include "../Command.hh"
 
 class Size : public Command {
-    Game* game_;
+    Game *game_;
 
 public:
-    explicit Size(Game* game) : game_(game) {}
-
-    ~Size() override = default;
+    explicit Size(Game *game) : game_(game) {}
 
     void execute() override {
         if (game_->get_hand().is_dealt()) {

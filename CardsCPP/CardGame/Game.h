@@ -12,7 +12,7 @@ protected:
     std::unordered_map<std::string, Command*> get_common_commands() const;
 
 public:
-    virtual ~Game() = 0;
+    virtual ~Game() = default;
 
     virtual Commands get_available_commands() const = 0;
 

@@ -86,10 +86,10 @@
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh">
 			<Option target="CardGame"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh">
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.cpp">
 			<Option target="CardGame"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.cpp">
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh">
 			<Option target="CardGame"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh">

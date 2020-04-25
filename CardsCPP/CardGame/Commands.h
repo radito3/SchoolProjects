@@ -3,7 +3,6 @@
 
 #include "Command.hh"
 #include <unordered_map>
-#include <utility>
 
 class Commands {
     std::unordered_map<std::string, Command *> commands_;
@@ -28,14 +27,13 @@ public:
         }
     }
 
-    bool is_valid_command(const std::string& command) {
+    bool is_valid(const std::string &command) {
         return commands_.find(command) != commands_.end();
     }
 
-    Command* get_command(const std::string& command) {
+    Command *get(const std::string &command) {
         return commands_.find(command)->second;
     }
-
 };
 
 #endif //CARDGAME_COMMANDS_H

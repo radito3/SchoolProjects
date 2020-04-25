@@ -29,5 +29,3 @@ std::unordered_map<std::string, Command *> Game::get_common_commands() const {
 
     return commands;
 }
-
-Game::~Game() = default;

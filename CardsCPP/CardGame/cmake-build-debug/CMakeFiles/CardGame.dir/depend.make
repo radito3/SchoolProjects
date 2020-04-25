@@ -16,8 +16,8 @@ CMakeFiles/CardGame.dir/Belote.cpp.o: ../Game.h
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../GameError.hh
 CMakeFiles/CardGame.dir/Belote.cpp.o: ../Hand.hh
 
-CMakeFiles/CardGame.dir/Command.cpp.o: ../Command.cpp
-CMakeFiles/CardGame.dir/Command.cpp.o: ../Command.hh
+CMakeFiles/CardGame.dir/Card.cpp.o: ../Card.cpp
+CMakeFiles/CardGame.dir/Card.cpp.o: ../Card.hh
 
 CMakeFiles/CardGame.dir/Game.cpp.o: ../Card.hh
 CMakeFiles/CardGame.dir/Game.cpp.o: ../Command.hh

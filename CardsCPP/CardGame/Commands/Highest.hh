@@ -5,19 +5,17 @@
 #include "../Command.hh"
 
 class Highest : public Command {
-    Game* game_;
+    Game *game_;
 
 public:
-    explicit Highest(Game* game) : game_(game) {}
-
-    ~Highest() override = default;
+    explicit Highest(Game *game) : game_(game) {}
 
     void execute() override {
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");
         }
-        const Card* highest = game_->get_hand().draw_highest();
-        std::cout << highest->to_string() << std::endl;
+        const Card *highest = game_->get_hand().draw_highest();
+        std::cout << *highest << std::endl;
         delete highest;
     }
 };

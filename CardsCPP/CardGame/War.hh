@@ -12,8 +12,6 @@ public:
         deck_.print();
     }
 
-    ~War() override = default;
-
     Commands get_available_commands() const override {
         return Commands(get_common_commands());
     }

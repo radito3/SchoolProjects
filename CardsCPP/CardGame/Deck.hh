@@ -40,7 +40,7 @@ public:
 
     void print() const {
         for (const Card &it : deck_) {
-            std::cout << it.to_string() << " ";
+            std::cout << it << ' ';
         }
         std::cout << std::endl;
     }
@@ -52,7 +52,7 @@ public:
 
     void sort() {
         check_size();
-        std::sort(deck_.begin(), deck_.end(), [&](const Card& x, const Card& y) -> bool {
+        std::sort(deck_.begin(), deck_.end(), [](const Card &x, const Card &y) -> bool {
             return x.get_power() < y.get_power();
         });
     }

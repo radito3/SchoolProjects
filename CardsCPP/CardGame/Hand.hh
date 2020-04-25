@@ -15,8 +15,13 @@ class Hand {
         }
     };
 
-    std::set<Card *, sort_by_power> hand_;
+    struct sort_by_rank : public std::binary_function<Card *, Card *, bool> {
+        bool operator()(const Card *x, const Card *y) const {
+            return index_of_rank(x->get_rank()) < index_of_rank(y->get_rank());
+        }
+    };
 
+    std::set<Card *, sort_by_power> hand_;
     const int hand_size_;
     bool dealt_;
 
@@ -36,16 +41,6 @@ class Hand {
         }
         return -1;
     }
-
-    struct adjacent_rank_finder : public std::unary_function<Card *, bool> {
-        const char rank;
-
-        explicit adjacent_rank_finder(const char rank) : rank(rank) {}
-
-        bool operator()(const Card *card) {
-            return (index_of_rank(card->get_rank()) - index_of_rank(rank)) == 1;
-        }
-    };
 
 public:
     explicit Hand(int size) : hand_size_(size), dealt_(false) {}
@@ -70,31 +65,28 @@ public:
     }
 
     int adjacent_cards_of_a_suit(const char suit) const {
-        Card **temp = new Card *[hand_.size()];
+        std::set<Card *, sort_by_rank> temp;
 
-        auto end = std::copy_if(hand_.begin(), hand_.end(), temp, [&](const Card *card) -> bool {
+        std::copy_if(hand_.begin(), hand_.end(), std::inserter(temp, temp.begin()), [&](const Card *card) -> bool {
             return card->get_suit() == suit;
         });
 
-        if (temp == end) {
-            delete[] temp;
+        if (temp.empty()) {
             return 0;
         }
 
-        auto min_by_rank = std::min_element(temp, end, [&](const Card *next, const Card *min) -> bool {
-            return index_of_rank(next->get_rank()) < index_of_rank(min->get_rank());
-        });
-
         int num_cards = 1;
-        char rank = (*min_by_rank)->get_rank();
-        Card **next_of_rank;
+        bool found_adjacent = false;
 
-        while ((next_of_rank = std::find_if(temp, end, adjacent_rank_finder(rank))) != end) {
-            num_cards++;
-            rank = (*next_of_rank)->get_rank();
+        for (auto it = ++temp.begin(); it != temp.end(); it++, it++) {
+            if ((index_of_rank((*it)->get_rank()) - index_of_rank((*--it)->get_rank())) == 1) {
+                num_cards++;
+                found_adjacent = true;
+            } else if (found_adjacent) {
+                break;
+            }
         }
 
-        delete[] temp;
         return num_cards;
     }
 
@@ -110,7 +102,7 @@ public:
 
     void print() const {
         for (const Card *it : hand_) {
-            std::cout << it->to_string() << " ";
+            std::cout << *it << ' ';
         }
         std::cout << std::endl;
     }
@@ -144,7 +136,7 @@ public:
         return last;
     }
 
-    const Card *get_highest_of_suit(char suit) const {
+    const Card *get_highest_of_suit(const char suit) const {
         check_size();
 
         auto highest = *std::max_element(hand_.begin(), hand_.end(),
