@@ -3,7 +3,6 @@
 
 #include "Command.hh"
 #include "Game.h"
-#include <bitset>
 #include <unordered_map>
 
 class Santase : public Game {
@@ -31,21 +30,13 @@ public:
         return hand_;
     }
 
-    bool is_twenty(const char suit) {
-        size_t pos = 0;
-        bool trump_suit = false;
-        std::bitset<3> diff_suit;
-
-        for (const char s : suits) {
-            bool pair = hand_.matching_suits_on_Q_K(s);
-            if (s == suit) {
-                trump_suit = pair;
-            } else {
-                diff_suit.set(pos++, pair);
+    bool is_twenty(const char trump_suit) {
+        for (const char suit : suits) {
+            if (suit != trump_suit && hand_.matching_suits_on_Q_K(suit)) {
+                return true;
             }
         }
-
-        return !trump_suit && diff_suit.any();
+        return false;
     }
 
     bool is_fourty(const char suit) {
