@@ -32,7 +32,7 @@ public:
     }
 
     Command *get(const std::string &command) {
-        return commands_.find(command)->second;
+        return commands_.at(command);
     }
 };
 

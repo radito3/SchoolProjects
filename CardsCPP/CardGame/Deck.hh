@@ -7,7 +7,6 @@
 #include <algorithm>
 #include <random>
 #include <iostream>
-#include <vector>
 
 class Deck {
     std::deque<Card> deck_;
@@ -19,10 +18,10 @@ class Deck {
     }
 
 public:
-    explicit Deck(const std::vector<char> &game_ranks) {
+    explicit Deck(const char game_ranks[]) {
         int power = 0;
-        for (char i : suits) {
-            for (char j : game_ranks) {
+        for (char i : Card::suits) {
+            for (char j : std::string(game_ranks)) {
                 deck_.emplace_back(i, j, power++);
             }
         }
@@ -53,7 +52,7 @@ public:
     void sort() {
         check_size();
         std::sort(deck_.begin(), deck_.end(), [](const Card &x, const Card &y) -> bool {
-            return x.get_power() < y.get_power();
+            return x.power < y.power;
         });
     }
 

@@ -4,24 +4,12 @@
 #include "Game.h"
 
 class War : public Game {
-    Deck deck_;
-    Hand hand_;
 
 public:
-    War() : deck_(ranks), hand_(26) {
-        deck_.print();
-    }
+    War() : Game(Card::ranks, 26) {}
 
     Commands get_available_commands() const override {
         return Commands(get_common_commands());
-    }
-
-    Deck &get_deck() override {
-        return deck_;
-    }
-
-    Hand &get_hand() override {
-        return hand_;
     }
 };
 

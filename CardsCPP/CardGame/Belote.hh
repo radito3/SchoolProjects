@@ -8,15 +8,12 @@
 #include <vector>
 
 class Belote : public Game {
-    const std::vector<char> belote_ranks = {'7', '8', '9', 'J', 'Q', 'K', 'T', 'A'};
-
-    Deck deck_;
-    Hand hand_;
+    static const char belote_ranks[];
 
     std::unordered_map<std::string, Command *> get_commands() const;
 
     bool n_adjacent_cards_of_a_suit(int n) const {
-        for (const char suit : suits) {
+        for (const char suit : Card::suits) {
             if (hand_.adjacent_cards_of_a_suit(suit) >= n) {
                 return true;
             }
@@ -25,20 +22,10 @@ class Belote : public Game {
     }
 
 public:
-    Belote() : deck_(belote_ranks), hand_(8) {
-        deck_.print();
-    }
+    Belote() : Game(belote_ranks, 8) {}
 
     Commands get_available_commands() const override {
         return Commands(get_commands());
-    }
-
-    Deck &get_deck() override {
-        return deck_;
-    }
-
-    Hand &get_hand() override {
-        return hand_;
     }
 
     void print_highest_of_suit(const char suit) const {
@@ -52,7 +39,7 @@ public:
     }
 
     bool is_belote() const {
-        for (const char suit : suits) {
+        for (const char suit : Card::suits) {
             if (hand_.matching_suits_on_Q_K(suit)) {
                 return true;
             }

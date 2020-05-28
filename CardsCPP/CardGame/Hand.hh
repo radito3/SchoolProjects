@@ -9,15 +9,15 @@
 
 class Hand {
 
-    struct sort_by_power : public std::binary_function<Card *, Card *, bool> {
+    struct sort_by_power {
         bool operator()(const Card *x, const Card *y) const {
-            return x->get_power() < y->get_power();
+            return x->power < y->power;
         }
     };
 
-    struct sort_by_rank : public std::binary_function<Card *, Card *, bool> {
+    struct sort_by_rank {
         bool operator()(const Card *x, const Card *y) const {
-            return index_of_rank(x->get_rank()) < index_of_rank(y->get_rank());
+            return index_of_rank(x) < index_of_rank(y);
         }
     };
 
@@ -31,15 +31,9 @@ class Hand {
         }
     }
 
-    static int index_of_rank(const char rank) {
-        int index = 0;
-        for (const char r : ranks) {
-            if (r == rank) {
-                return index;
-            }
-            index++;
-        }
-        return -1;
+    static int index_of_rank(const Card* card) {
+        std::string ranks_str(Card::ranks);
+        return ranks_str.find(card->rank);
     }
 
 public:
@@ -59,7 +53,7 @@ public:
 
     bool matching_suits_on_Q_K(const char suit) const {
         int matching = std::count_if(hand_.begin(), hand_.end(), [&](const Card *card) -> bool {
-            return card->get_suit() == suit && (card->get_rank() == 'Q' || card->get_rank() == 'K');
+            return card->suit == suit && (card->rank == 'Q' || card->rank == 'K');
         });
         return matching == 2;
     }
@@ -68,7 +62,7 @@ public:
         std::set<Card *, sort_by_rank> temp;
 
         std::copy_if(hand_.begin(), hand_.end(), std::inserter(temp, temp.begin()), [&](const Card *card) -> bool {
-            return card->get_suit() == suit;
+            return card->suit == suit;
         });
 
         if (temp.empty()) {
@@ -79,11 +73,12 @@ public:
         bool found_adjacent = false;
 
         for (auto it = ++temp.begin(); it != temp.end(); it++, it++) {
-            if ((index_of_rank((*it)->get_rank()) - index_of_rank((*--it)->get_rank())) == 1) {
+            if ((index_of_rank(*it) - index_of_rank(*--it)) == 1) {
                 num_cards++;
                 found_adjacent = true;
             } else if (found_adjacent) {
-                break;
+                num_cards = 1;
+                found_adjacent = false;
             }
         }
 
@@ -141,9 +136,9 @@ public:
 
         auto highest = *std::max_element(hand_.begin(), hand_.end(),
                                          [&](const Card *largest, const Card *current) -> bool {
-                                             return current->get_suit() == suit && sort_by_power()(largest, current);
+                                             return current->suit == suit && sort_by_power()(largest, current);
                                          });
-        if (highest->get_suit() != suit) {
+        if (highest->suit != suit) {
             return nullptr;
         }
         return highest;

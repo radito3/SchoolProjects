@@ -6,32 +6,19 @@
 #include <unordered_map>
 
 class Santase : public Game {
-    const std::vector<char> santase_ranks = {'9', 'J', 'Q', 'K', 'T', 'A'};
-
-    Deck deck_;
-    Hand hand_;
+    static const char santase_ranks[];
 
     std::unordered_map<std::string, Command *> get_commands() const;
 
 public:
-    Santase() : deck_(santase_ranks), hand_(6) {
-        deck_.print();
-    }
+    Santase() : Game(santase_ranks, 6) {}
 
     Commands get_available_commands() const override {
         return Commands(get_commands());
     }
 
-    Deck &get_deck() override {
-        return deck_;
-    }
-
-    Hand &get_hand() override {
-        return hand_;
-    }
-
-    bool is_twenty(const char trump_suit) {
-        for (const char suit : suits) {
+    bool is_twenty(const char trump_suit) const {
+        for (const char suit : Card::suits) {
             if (suit != trump_suit && hand_.matching_suits_on_Q_K(suit)) {
                 return true;
             }
@@ -39,7 +26,7 @@ public:
         return false;
     }
 
-    bool is_fourty(const char suit) {
+    bool is_fourty(const char suit) const {
         return hand_.matching_suits_on_Q_K(suit);
     }
 };
