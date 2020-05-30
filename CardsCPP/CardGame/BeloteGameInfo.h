@@ -6,10 +6,6 @@
 class BeloteGameInfo : public GameInfo {
 
 public:
-    std::vector<char> get_suits() const override {
-        return {'C', 'D', 'H', 'S'};
-    }
-
     std::vector<char> get_ranks() const override {
         return {'7', '8', '9', 'J', 'Q', 'K', 'T', 'A'};
     }

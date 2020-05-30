@@ -6,10 +6,6 @@
 class SantaseGameInfo : public GameInfo {
 
 public:
-    std::vector<char> get_suits() const override {
-        return {'C', 'D', 'H', 'S'};
-    }
-
     std::vector<char> get_ranks() const override {
         return {'9', 'J', 'Q', 'K', 'T', 'A'};
     }

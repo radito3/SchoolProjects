@@ -29,6 +29,8 @@ Command.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
 Game.h
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
+BeloteGameInfo.h
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/BeloteGameInfo.h
 unordered_map
 -
 iostream
@@ -36,9 +38,15 @@ iostream
 vector
 -
 
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/BeloteGameInfo.h
+GameInfo.h
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameInfo.h
+
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.cpp
+Card.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
-vector
--
+
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.hh
 ostream
 -
 
@@ -217,6 +225,8 @@ Hand.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
 Commands.h
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Commands.h
+GameInfo.h
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameInfo.h
 
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameError.hh
 exception
@@ -229,6 +239,10 @@ Belote.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh
 Santase.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.hh
+
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameInfo.h
+vector
+-
 
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh
 GameError.hh
@@ -259,12 +273,24 @@ Command.hh
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Command.hh
 Game.h
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
+SantaseGameInfo.h
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/SantaseGameInfo.h
 unordered_map
 -
+
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/SantaseGameInfo.h
+GameInfo.h
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameInfo.h
 
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/War.hh
 Game.h
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Game.h
+WarGameInfo.h
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/WarGameInfo.h
+
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/WarGameInfo.h
+GameInfo.h
+/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameInfo.h
 
 /cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/main.cpp
 iostream

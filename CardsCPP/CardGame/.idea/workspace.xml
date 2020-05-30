@@ -12,10 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fb71a37-bf18-4f90-aca3-62b04c249f74" name="Default" comment="Optimizations &amp; code improvements in CardGame">
-      <change afterPath="$PROJECT_DIR$/BeloteGameInfo.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameInfo.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SantaseGameInfo.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WarGameInfo.h" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/CriteriaFilter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/impl/AbstractCriteria.java" afterDir="false" />
@@ -23,19 +19,18 @@
       <change afterPath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/impl/StatusCriteria.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/impl/TagsCriteria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Belote.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Belote.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Belote.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Belote.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Card.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Card.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Card.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Card.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Deck.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Deck.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/Game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hand.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Hand.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Santase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Santase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Santase.hh" beforeDir="false" afterPath="$PROJECT_DIR$/Santase.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/War.hh" beforeDir="false" afterPath="$PROJECT_DIR$/War.hh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CardGame.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CardGame.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CardGame.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeloteGameInfo.h" beforeDir="false" afterPath="$PROJECT_DIR$/BeloteGameInfo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameInfo.h" beforeDir="false" afterPath="$PROJECT_DIR$/GameInfo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SantaseGameInfo.h" beforeDir="false" afterPath="$PROJECT_DIR$/SantaseGameInfo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WarGameInfo.h" beforeDir="false" afterPath="$PROJECT_DIR$/WarGameInfo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Belote.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Belote.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Card.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Card.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Game.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Game.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Santase.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/Santase.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CardGame.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/Criteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/Criteria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/impl/CriteriaImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/impl/TaskImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../TodoList/src/org/elsys/todo/impl/TaskImpl.java" afterDir="false" />
@@ -129,7 +124,8 @@
       <workItem from="1588091865184" duration="939000" />
       <workItem from="1590585013313" duration="12182000" />
       <workItem from="1590648202389" duration="16966000" />
-      <workItem from="1590826458101" duration="4061000" />
+      <workItem from="1590826458101" duration="4218000" />
+      <workItem from="1590840844134" duration="892000" />
     </task>
     <task id="LOCAL-00001" summary="Optimizations &amp; code improvements in CardGame">
       <created>1587836173453</created>
@@ -145,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590666786675</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Use looser coupling in CardsCPP classes">
+      <created>1590830672271</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590830672272</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +157,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Optimizations &amp; code improvements in CardGame" />
     <MESSAGE value="Remove redundant code &amp; refactoring in CardGame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove redundant code &amp; refactoring in CardGame" />
+    <MESSAGE value="Use looser coupling in CardsCPP classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use looser coupling in CardsCPP classes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="553" y="179" key="#New_File_Extensions" timestamp="1584976169671">
@@ -177,10 +181,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585134049601" />
-    <state x="570" y="113" key="CommitChangelistDialog2" timestamp="1590666784057">
+    <state x="570" y="113" key="CommitChangelistDialog2" timestamp="1590830669355">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="570" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590666784057" />
+    <state x="570" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590830669355" />
     <state width="437" height="466" key="DebuggerActiveHint" timestamp="1590600624409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -189,22 +193,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584975082089" />
-    <state width="1878" height="289" key="GridCell.Tab.0.bottom" timestamp="1590830461888">
+    <state width="1878" height="289" key="GridCell.Tab.0.bottom" timestamp="1590830725443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590830461888" />
-    <state width="1878" height="289" key="GridCell.Tab.0.center" timestamp="1590830461887">
+    <state width="1878" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590830725443" />
+    <state width="1878" height="289" key="GridCell.Tab.0.center" timestamp="1590830725443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590830461887" />
-    <state width="1878" height="289" key="GridCell.Tab.0.left" timestamp="1590830461886">
+    <state width="1878" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590830725443" />
+    <state width="1878" height="289" key="GridCell.Tab.0.left" timestamp="1590830725443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590830461886" />
-    <state width="1878" height="289" key="GridCell.Tab.0.right" timestamp="1590830461888">
+    <state width="1878" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590830725443" />
+    <state width="1878" height="289" key="GridCell.Tab.0.right" timestamp="1590830725443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590830461888" />
+    <state width="1878" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590830725443" />
     <state width="1878" height="347" key="GridCell.Tab.1.bottom" timestamp="1590666852313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -225,14 +229,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="462" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585158298879" />
-    <state x="553" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590666835648">
+    <state x="553" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590830677876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="553" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590666835648" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590826457735">
+    <state x="553" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590830677876" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590840844174">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590826457735" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590840844174" />
     <state x="703" y="164" key="refactoring.ChangeSignatureDialog" timestamp="1585129433239">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
