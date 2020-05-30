@@ -3,17 +3,17 @@
 
 #include "Command.hh"
 #include "Game.h"
+#include "BeloteGameInfo.h"
 #include <unordered_map>
 #include <iostream>
 #include <vector>
 
 class Belote : public Game {
-    static const char belote_ranks[];
 
     std::unordered_map<std::string, Command *> get_commands() const;
 
     bool n_adjacent_cards_of_a_suit(int n) const {
-        for (const char suit : Card::suits) {
+        for (const char suit : BeloteGameInfo().get_suits()) {
             if (hand_.adjacent_cards_of_a_suit(suit) >= n) {
                 return true;
             }
@@ -22,7 +22,7 @@ class Belote : public Game {
     }
 
 public:
-    Belote() : Game(belote_ranks, 8) {}
+    Belote() : Game(new BeloteGameInfo) {}
 
     Commands get_available_commands() const override {
         return Commands(get_commands());
@@ -39,7 +39,7 @@ public:
     }
 
     bool is_belote() const {
-        for (const char suit : Card::suits) {
+        for (const char suit : BeloteGameInfo().get_suits()) {
             if (hand_.matching_suits_on_Q_K(suit)) {
                 return true;
             }

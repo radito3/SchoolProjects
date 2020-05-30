@@ -2,11 +2,12 @@
 #define CARDGAME_WAR_HH
 
 #include "Game.h"
+#include "WarGameInfo.h"
 
 class War : public Game {
 
 public:
-    War() : Game(Card::ranks, 26) {}
+    War() : Game(new WarGameInfo) {}
 
     Commands get_available_commands() const override {
         return Commands(get_common_commands());

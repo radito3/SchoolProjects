@@ -5,6 +5,7 @@
 #include "Command.hh"
 #include "Hand.hh"
 #include "Commands.h"
+#include "GameInfo.h"
 
 class Game {
 
@@ -15,8 +16,11 @@ protected:
     Hand hand_;
 
 public:
-    Game(const char game_ranks[], int hand_size) : deck_(game_ranks), hand_(hand_size) {
+    explicit Game(GameInfo* game_info)
+        : deck_(game_info->get_suits(), game_info->get_ranks()), hand_(game_info->get_hand_size())
+    {
         deck_.print();
+        delete game_info;
     }
 
     virtual ~Game() = default;

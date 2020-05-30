@@ -19,5 +19,3 @@ std::unordered_map<std::string, Command *> Santase::get_commands() const {
 
     return commands;
 }
-
-const char Santase::santase_ranks[] = {'9', 'J', 'Q', 'K', 'T', 'A'};

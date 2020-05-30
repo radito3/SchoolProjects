@@ -22,5 +22,3 @@ std::unordered_map<std::string, Command *> Belote::get_commands() const {
 
     return commands;
 }
-
-const char Belote::belote_ranks[] = {'7', '8', '9', 'J', 'Q', 'K', 'T', 'A'};

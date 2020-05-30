@@ -32,12 +32,12 @@ class Hand {
     }
 
     static int index_of_rank(const Card* card) {
-        std::string ranks_str(Card::ranks);
+        std::string ranks_str({'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'});
         return ranks_str.find(card->rank);
     }
 
 public:
-    explicit Hand(int size) : hand_size_(size), dealt_(false) {}
+    explicit Hand(int hand_size) : hand_size_(hand_size), dealt_(false) {}
 
     Hand(const Hand &hand) = delete;
 

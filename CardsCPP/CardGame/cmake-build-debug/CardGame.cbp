@@ -86,6 +86,9 @@
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Belote.hh">
 			<Option target="CardGame"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/BeloteGameInfo.h">
+			<Option target="CardGame"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Card.cpp">
 			<Option target="CardGame"/>
 		</Unit>
@@ -167,6 +170,9 @@
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameFactory.h">
 			<Option target="CardGame"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/GameInfo.h">
+			<Option target="CardGame"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Hand.hh">
 			<Option target="CardGame"/>
 		</Unit>
@@ -176,7 +182,13 @@
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/Santase.hh">
 			<Option target="CardGame"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/SantaseGameInfo.h">
+			<Option target="CardGame"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/War.hh">
+			<Option target="CardGame"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/WarGameInfo.h">
 			<Option target="CardGame"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/i512899/Repos/SchoolProjects/CardsCPP/CardGame/main.cpp">

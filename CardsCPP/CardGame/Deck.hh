@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <random>
 #include <iostream>
+#include <vector>
 
 class Deck {
     std::deque<Card> deck_;
@@ -18,11 +19,11 @@ class Deck {
     }
 
 public:
-    explicit Deck(const char game_ranks[]) {
+    Deck(const std::vector<char>& suits, const std::vector<char>& ranks) {
         int power = 0;
-        for (char i : Card::suits) {
-            for (char j : std::string(game_ranks)) {
-                deck_.emplace_back(i, j, power++);
+        for (char suit : suits) {
+            for (char rank : ranks) {
+                deck_.emplace_back(suit, rank, power++);
             }
         }
     }
@@ -34,8 +35,6 @@ public:
     Deck &operator=(const Deck &deck) = delete;
 
     Deck &operator=(Deck &&deck) = delete;
-
-    ~Deck() = default;
 
     void print() const {
         for (const Card &it : deck_) {

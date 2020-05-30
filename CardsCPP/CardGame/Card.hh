@@ -8,10 +8,6 @@ struct Card {
     char rank;
     int power;
 
-    static const char suits[4];
-
-    static const char ranks[];
-
     Card(char suit, char rank, int pow)
             : suit(suit), rank(rank), power(pow) {};
 };
