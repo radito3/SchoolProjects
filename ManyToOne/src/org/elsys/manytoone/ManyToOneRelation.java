@@ -35,19 +35,19 @@ public class ManyToOneRelation<M, O> {
 	 * @return
 	 */
 	public boolean connect(M source, O target) {
-	    if (!map.containsValue(target)) {
-            map.put(new HashSet<>(Collections.singleton(source)), target);
-            return true;
-        }
+	    boolean foundTarget = false;
         for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-            for (M key : entry.getKey()) {
-                if (key.equals(source)) {
-                    map.put(new HashSet<>(Collections.singleton(source)), target);
-                    return true;
-                }
-            }
-            entry.getKey().add(source);
+			if (entry.getValue().equals(target)) {
+				foundTarget = true;
+				entry.getKey().add(source);
+			} else {
+				entry.getKey().remove(source);
+			}
         }
+		map.keySet().removeIf(Set::isEmpty);
+		if (!foundTarget) {
+			map.put(new HashSet<>(Collections.singleton(source)), target);
+		}
         return true;
 	}
 
@@ -56,12 +56,10 @@ public class ManyToOneRelation<M, O> {
 	 * @return <code>true</code> if the relation contains the given source
 	 */
 	public boolean containsSource(M source) {
-        for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-            for (M key : entry.getKey()) {
-                if (key.equals(source)) {
-                    return true;
-                }
-            }
+        for (Set<M> sources : map.keySet()) {
+            if (sources.contains(source)) {
+            	return true;
+			}
         }
 		return false;
 	}
@@ -80,11 +78,9 @@ public class ManyToOneRelation<M, O> {
 	 */
 	public O getTarget(M source) {
         for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-            for (M key : entry.getKey()) {
-                if (key.equals(source)) {
-                    return entry.getValue();
-                }
-            }
+        	if (entry.getKey().contains(source)) {
+        		return entry.getValue();
+			}
         }
 		return null;
 	}
@@ -113,12 +109,13 @@ public class ManyToOneRelation<M, O> {
 	 * @param source
 	 */
 	public void disconnectSource(M source) {
-        for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-            for (M key : entry.getKey()) {
-                if (key.equals(source)) {
-                    map.remove(entry.getKey());
-                }
-            }
+        for (Set<M> sources : map.keySet()) {
+        	if (sources.remove(source)) {
+				if (sources.isEmpty()) {
+					map.remove(sources);
+				}
+				break;
+			}
         }
 	}
 
@@ -136,6 +133,7 @@ public class ManyToOneRelation<M, O> {
         for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
             if (entry.getValue().equals(target)) {
                 map.remove(entry.getKey());
+                break;
             }
         }
 	}
