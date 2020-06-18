@@ -59,30 +59,38 @@ public:
     }
 
     int adjacent_cards_of_a_suit(const char suit) const {
-        std::set<Card *, sort_by_rank> temp;
+        std::set<Card *, sort_by_rank> cards_by_rank;
 
-        std::copy_if(hand_.begin(), hand_.end(), std::inserter(temp, temp.begin()), [&](const Card *card) -> bool {
-            return card->suit == suit;
-        });
+        std::copy_if(hand_.begin(), hand_.end(), std::inserter(cards_by_rank, cards_by_rank.begin()),
+                     [&](const Card *card) -> bool {
+                         return card->suit == suit;
+                     });
 
-        if (temp.empty()) {
+        if (cards_by_rank.empty()) {
             return 0;
         }
 
-        int num_cards = 1;
-        bool found_adjacent = false;
+        int current_seq = 1, max_seq = 1;
+        auto current = cards_by_rank.begin();
+        auto next = current;
+        ++next;
 
-        for (auto it = ++temp.begin(); it != temp.end(); it++, it++) {
-            if ((index_of_rank(*it) - index_of_rank(*--it)) == 1) {
-                num_cards++;
-                found_adjacent = true;
-            } else if (found_adjacent) {
-                num_cards = 1;
-                found_adjacent = false;
+        while (next != cards_by_rank.end()) {
+            if ((index_of_rank(*next) - index_of_rank(*current)) == 1) {
+                current_seq++;
+            } else {
+                current_seq = 1;
             }
+
+            if (current_seq > max_seq) {
+                max_seq = current_seq;
+            }
+
+            ++current;
+            ++next;
         }
 
-        return num_cards;
+        return max_seq;
     }
 
     void deal(Deck &deck) {
