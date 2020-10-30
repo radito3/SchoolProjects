@@ -70,27 +70,23 @@ public:
             return 0;
         }
 
-        int current_seq = 1, max_seq = 1;
+        int current_sequence = 1, max_sequence = 1;
         auto current = cards_by_rank.begin();
         auto next = current;
         ++next;
 
-        while (next != cards_by_rank.end()) {
+        for (; next != cards_by_rank.end(); ++current, ++next) {
             if ((index_of_rank(*next) - index_of_rank(*current)) == 1) {
-                current_seq++;
+                current_sequence++;
             } else {
-                current_seq = 1;
+                current_sequence = 1;
             }
 
-            if (current_seq > max_seq) {
-                max_seq = current_seq;
+            if (current_sequence > max_sequence) {
+                max_sequence = current_sequence;
             }
-
-            ++current;
-            ++next;
         }
-
-        return max_seq;
+        return max_sequence;
     }
 
     void deal(Deck &deck) {

@@ -6,7 +6,6 @@
 #include "Santase.hh"
 
 class GameFactory {
-
 public:
     GameFactory() = delete;
 

@@ -13,12 +13,10 @@ class Belote : public Game {
     std::unordered_map<std::string, Command *> get_commands() const;
 
     bool n_adjacent_cards_of_a_suit(int n) const {
-        for (const char suit : BeloteGameInfo().get_suits()) {
-            if (hand_.adjacent_cards_of_a_suit(suit) >= n) {
-                return true;
-            }
-        }
-        return false;
+        std::vector<char> suits = BeloteGameInfo().get_suits();
+        return std::any_of(suits.begin(), suits.end(), [&](const char& suit) -> bool {
+            return hand_.adjacent_cards_of_a_suit(suit) >= n;
+        });
     }
 
 public:
@@ -39,12 +37,10 @@ public:
     }
 
     bool is_belote() const {
-        for (const char suit : BeloteGameInfo().get_suits()) {
-            if (hand_.matching_suits_on_Q_K(suit)) {
-                return true;
-            }
-        }
-        return false;
+        std::vector<char> suits = BeloteGameInfo().get_suits();
+        return std::any_of(suits.begin(), suits.end(), [&](const char& suit) -> bool {
+            return hand_.matching_suits_on_Q_K(suit);
+        });
     }
 
     bool is_tierce() const {

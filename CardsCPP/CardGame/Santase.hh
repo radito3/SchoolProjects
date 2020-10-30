@@ -18,12 +18,10 @@ public:
     }
 
     bool is_twenty(const char trump_suit) const {
-        for (const char suit : SantaseGameInfo().get_suits()) {
-            if (suit != trump_suit && hand_.matching_suits_on_Q_K(suit)) {
-                return true;
-            }
-        }
-        return false;
+        std::vector<char> suits = SantaseGameInfo().get_suits();
+        return std::any_of(suits.begin(), suits.end(), [&](const char& suit) -> bool {
+            return suit != trump_suit && hand_.matching_suits_on_Q_K(suit);
+        });
     }
 
     bool is_fourty(const char suit) const {

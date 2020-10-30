@@ -1,17 +1,11 @@
 #ifndef CARDGAME_GAMEERROR_HH
 #define CARDGAME_GAMEERROR_HH
 
-#include <exception>
+#include <stdexcept>
 
-class GameError : public std::exception {
-    const char *msg_;
-
+class GameError : public std::runtime_error {
 public:
-    explicit GameError(const char *msg) : msg_(msg) {}
-
-    const char *what() const noexcept override {
-        return msg_;
-    }
+    explicit GameError(const char* message) : runtime_error(message) {}
 };
 
 #endif //CARDGAME_GAMEERROR_HH

@@ -1,5 +1,4 @@
 #include "Belote.hh"
-#include "Command.hh"
 #include "Commands/IsBelote.hh"
 #include "Commands/IsTierce.h"
 #include "Commands/IsQuarte.h"

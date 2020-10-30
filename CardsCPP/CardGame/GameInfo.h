@@ -8,7 +8,7 @@ class GameInfo {
 public:
     virtual ~GameInfo() = default;
 
-    std::vector<char> get_suits() const {
+    virtual std::vector<char> get_suits() const {
         return {'C', 'D', 'H', 'S'};
     }
 
