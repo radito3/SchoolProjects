@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <button id="getJokes">Get Jokes!</button>
+        <table id="jokesTable">
+            <tr class="jokeRowModel" style="display:none;">
+                <td id="joke"></td>
+                <td><button>Hide joke</button></td>
+            </tr>
+        </table>
+        <script>
+            var currentJokes = 0;
+            $("#getJokes").click(() => {
+                getJokes(10);
+            })
+            var getJokes = amount => {
+                $.ajax(`http://api.icndb.com/jokes/random/${amount}`)
+                    .done(receivedJokes => {
+                        currentJokes = amount;
+                        $("tr").remove(".jokeRow");
+                        receivedJokes.value.forEach(e => {
+                            var joke = $(".jokeRowModel").clone().prop({ class: "jokeRow", style: "display:table-row;"});
+                            joke.find("button").click(removeJoke);
+                            joke.find("#joke").text(e.joke);
+                            joke.appendTo("#jokesTable");
+                        });
+                    });
+            };
+            function removeJoke() {
+                $(this).parents(".jokeRow").remove();
+                currentJokes--;
+                if (currentJokes <= 0) {
+                    getJokes(10);
+                }
+            };
+        </script>
+    </body>
+</html>
