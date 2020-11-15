@@ -26,7 +26,7 @@ public:
         return Commands(get_commands());
     }
 
-    void print_highest_of_suit(const char suit) const {
+    void print_highest_of_suit(const char& suit) const {
         const Card *highest = hand_.get_highest_of_suit(suit);
 
         if (highest == nullptr) {

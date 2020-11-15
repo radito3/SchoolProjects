@@ -135,17 +135,16 @@ public:
         return last;
     }
 
-    const Card *get_highest_of_suit(const char suit) const {
+    const Card *get_highest_of_suit(const char& suit) const {
         check_size();
+        auto highest = std::find_if(hand_.rbegin(), hand_.rend(), [&](const Card* card) {
+            return card->suit == suit;
+        });
 
-        auto highest = *std::max_element(hand_.begin(), hand_.end(),
-                                         [&](const Card *largest, const Card *current) -> bool {
-                                             return current->suit == suit && sort_by_power()(largest, current);
-                                         });
-        if (highest->suit != suit) {
+        if (highest == hand_.rend()) {
             return nullptr;
         }
-        return highest;
+        return *highest;
     }
 };
 
