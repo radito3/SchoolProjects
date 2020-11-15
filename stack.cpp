@@ -1,24 +1,22 @@
 #include <iostream>
+#include <algorithm>
+#include <memory>
+#include <stdexcept>
 
 using namespace std;
-
-class StackError {};
 
 class Stack {
 	int top_;
 	int capacity_;
 	int* data_;
 
-	static const int CHUNK_SIZE = 5;
+	static const int CHUNK_SIZE = 15;
 
 	void resize() {
-		cout << "resizing()..." << endl;
 		int* old_data = data_;
 		capacity_ += CHUNK_SIZE;
 		data_ = new int[capacity_];
-		for(int i=0; i<top_; ++i) {
-			data_[i] = old_data[i];
-		}
+		copy(old_data, old_data + top_, data_);
 		delete [] old_data;
 	}
 
@@ -30,22 +28,31 @@ public:
 	}
 	
 	Stack(const Stack& other) : top_(other.top_), capacity_(other.capacity_), data_(new int[capacity_]) {
-		for(int i=0; i<top_; ++i) {
-			data_[i] = other.data_[i];
-		}
+		copy(other.data_, other.data_ + other.top_, data_);
 	}
 	
 	Stack& operator=(const Stack& other) {
 		if (this != &other) {
 			delete [] data_;
-	
 			top_ = other.top_;
 			capacity_ = other.capacity_;
 			data_ = new int[capacity_];
+			copy(other.data_, other.data_ + top_, data_);
+		}
+		return *this;
+	}
 	
-			for(int i=0; i< top_; ++i) {
-				data_[i] = other.data_[i];
-			}
+	Stack(Stack&& other) noexcept : top_(move(other.top_)), capacity_(move(other.capacity_)), data_(new int[capacity_]) {
+		move(other.data_, other.data_ + top_, data_);
+	}
+	
+	Stack& operator=(Stack&& other) {
+		if (this != addressof(other)) {
+			delete [] data_;
+			top_ = move(other.top_);
+			capacity_ = move(other.capacity_);
+			data_ = new int[capacity_];
+			move(other.data_, other.data_ + top_, data_);
 		}
 		return *this;
 	}
@@ -54,7 +61,7 @@ public:
 		return top_ == 0;
 	}
 	
-	void push(int val) {
+	void push(const int& val) {
 	 	if (top_ == capacity_) {
 			resize();
 		}
@@ -63,7 +70,7 @@ public:
 
 	int pop() {
 		if (empty()) {
-			throw StackError();
+			throw runtime_error("empty stack");
 		}
 		return data_[--top_];
 	}
