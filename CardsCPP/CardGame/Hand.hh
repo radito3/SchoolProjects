@@ -9,19 +9,15 @@
 
 class Hand {
 
-    struct sort_by_power {
-        bool operator()(const Card *x, const Card *y) const {
-            return x->power < y->power;
-        }
-    };
+    struct rank_comparator {
+        const std::string ranks = {'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
 
-    struct sort_by_rank {
         bool operator()(const Card *x, const Card *y) const {
-            return index_of_rank(x) < index_of_rank(y);
+            return ranks.find(x->rank) < ranks.find(y->rank);
         }
-    };
+    } rank_cmp;
 
-    std::set<Card *, sort_by_power> hand_;
+    std::set<Card *, power_comparator> hand_;
     const int hand_size_;
     bool dealt_;
 
@@ -31,9 +27,8 @@ class Hand {
         }
     }
 
-    static int index_of_rank(const Card* card) {
-        std::string ranks_str({'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'});
-        return ranks_str.find(card->rank);
+    int index_of_rank(const Card* card) const {
+        return rank_cmp.ranks.find(card->rank);
     }
 
 public:
@@ -59,12 +54,13 @@ public:
     }
 
     int adjacent_cards_of_a_suit(const char suit) const {
-        std::set<Card *, sort_by_rank> cards_by_rank;
+        std::set<Card *, rank_comparator> cards_by_rank;
 
-        std::copy_if(hand_.begin(), hand_.end(), std::inserter(cards_by_rank, cards_by_rank.begin()),
-                     [&](const Card *card) -> bool {
-                         return card->suit == suit;
-                     });
+        for (auto* card : hand_) {
+            if (card->suit == suit) {
+                cards_by_rank.insert(card);
+            }
+        }
 
         if (cards_by_rank.empty()) {
             return 0;

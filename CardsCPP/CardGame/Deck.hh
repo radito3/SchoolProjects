@@ -50,9 +50,7 @@ public:
 
     void sort() {
         check_size();
-        std::sort(deck_.begin(), deck_.end(), [](const Card &x, const Card &y) -> bool {
-            return x.power < y.power;
-        });
+        std::sort(deck_.begin(), deck_.end(), power_comparator());
     }
 
     size_t size() const {

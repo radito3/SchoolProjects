@@ -12,6 +12,16 @@ struct Card {
             : suit(suit), rank(rank), power(pow) {};
 };
 
+struct power_comparator {
+    bool operator()(const Card *x, const Card *y) const {
+        return x->power < y->power;
+    }
+
+    bool operator()(const Card &x, const Card &y) const {
+        return x.power < y.power;
+    }
+};
+
 std::ostream &operator<<(std::ostream &, const Card &);
 
 #endif //CARDGAME_CARD_HH
