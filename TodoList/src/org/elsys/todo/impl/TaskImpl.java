@@ -1,6 +1,7 @@
 package org.elsys.todo.impl;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import org.elsys.todo.*;
 
@@ -39,37 +40,28 @@ public class TaskImpl implements Task {
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		TaskImpl task = (TaskImpl) o;
+		return status == task.status
+			&& Objects.equals(description, task.description)
+			&& priority == task.priority
+			&& Arrays.equals(tags, task.tags);
+	}
+
+	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((priority == null) ? 0 : priority.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + Arrays.hashCode(tags);
+		int result = Objects.hash(status, description, priority);
+		result = 31 * result + Arrays.hashCode(tags);
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TaskImpl other = (TaskImpl) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (priority != other.priority)
-			return false;
-		if (status != other.status)
-			return false;
-		if (!Arrays.equals(tags, other.tags))
-			return false;
-		return true;
+	public String toString() {
+		return "TaskImpl{" + "status=" + status + ", description='" + description + '\'' + ", priority=" + priority + ", tags="
+			+ Arrays.toString(tags) + '}';
 	}
-
 }

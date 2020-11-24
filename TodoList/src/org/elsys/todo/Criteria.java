@@ -1,25 +1,23 @@
 package org.elsys.todo;
 
-import java.util.function.Predicate;
-
-import org.elsys.todo.impl.CriteriaImpl;
+import org.elsys.todo.impl.PriorityCriteria;
+import org.elsys.todo.impl.StatusCriteria;
+import org.elsys.todo.impl.TagsCriteria;
 
 public interface Criteria {
 
 	static Criteria status(Status status) {
-		return new CriteriaImpl(status);
+		return new StatusCriteria(status);
 	}
 
 	static Criteria priority(Priority priority) {
-		return new CriteriaImpl(priority);
+		return new PriorityCriteria(priority);
 	}
 
 	static Criteria tags(String[] tags) {
-		return new CriteriaImpl(tags);
+		return new TagsCriteria(tags);
 	}
 
-	Predicate<Task> getFilter();
-	
 	/**
 	 * Creates new Criteria instance representing conjunction with the provided
 	 * as argument Criteria.
@@ -41,7 +39,6 @@ public interface Criteria {
 	/**
 	 * Creates new Criteria instance representing negation of the Criteria.
 	 * 
-	 * @param other
 	 * @return the new Criteria instance
 	 */
 	Criteria not();

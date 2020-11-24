@@ -70,13 +70,13 @@ public class TodoListImplTest {
 	public void testGetTasks() {
 		assertEquals(5, todoList.getTasks().size());
 	}
-	
+
 	@Test
 	public void filterByStatus() {
 		TodoList filtered = todoList.filter(Criteria.status(Status.DOING));
 		assertEquals(1, filtered.getTasks().size());
 	}
-	
+
 	@Test
 	public void filterByPriority() {
 		TodoList filtered = todoList.filter(Criteria.priority(Priority.HIGH));
@@ -84,7 +84,7 @@ public class TodoListImplTest {
 		assertEquals(0, filtered.getTasks().size());
 		assertEquals(2, filteredNew.getTasks().size());
 	}
-	
+
 	@Test
 	public void filterByNotCriteria() {
 		assertEquals(5, todoList
@@ -93,20 +93,20 @@ public class TodoListImplTest {
 		assertEquals(3, todoList
 				.filter(Criteria.priority(Priority.NORMAL).not())
 				.getTasks().size());
-	}	
-	
+	}
+
 	@Test
 	public void filterByAnd() {
 		assertEquals(2, todoList1.filter(Criteria.priority(Priority.NORMAL)
 				.and(Criteria.status(Status.TODO))).getTasks().size());
 	}
-	
+
 	@Test
 	public void filterByTags() {
 		assertEquals(2, todoList1.filter(Criteria
 				.tags(new String[] { "school" })).getTasks().size());
 	}
-	
+
 	@Test
 	public void filterByOr() {
 		assertEquals(5, todoList1.filter(Criteria.status(Status.TODO)
@@ -115,8 +115,8 @@ public class TodoListImplTest {
 
 	@Test
 	public void percentageTest() {
-		assertEquals(new Double(100.00), todoList2.percentageCompleted());
-		assertEquals(new Double(70.00), todoList3.percentageCompleted());
+		assertEquals(100.00, todoList2.percentageCompleted());
+		assertEquals(70.00, todoList3.percentageCompleted());
 	}
 	
 }

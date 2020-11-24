@@ -6,7 +6,7 @@ import org.elsys.todo.impl.TodoListImpl;
 
 public interface TodoList {
 
-	public static TodoList parse(String input) {
+	static TodoList parse(String input) {
 		return new TodoListImpl(input);
 	}
 

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.elsys.todo.*;
@@ -17,21 +15,21 @@ public class TodoListImpl implements TodoList {
 	public TodoListImpl(String input) {
 		String[] lines = input.split("\n");
 		for (String line : lines) {
-			Pattern pattern = Pattern.compile("^(\\w+)\\s+\\|\\s(.+)\\s+\\|\\s(\\w+)\\s*\\|\\s(.+)\r$");
-			Matcher matcher = pattern.matcher(line);
-			if (!matcher.matches()) 
-				continue;
+			String[] components = line.split(" \\| ");
+			if (components.length != 4) {
+				throw new IllegalArgumentException("Invalid input");
+			}
 
-			Status status = Status.valueOf(Status.class, matcher.group(1));
-			String descr = matcher.group(2);
-			Priority priority = Priority.valueOf(Priority.class, matcher.group(3).toUpperCase());
-			String[] tags = matcher.group(4).split(", ");
+			Status status = Status.valueOf(components[0].trim());
+			String description = components[1].trim();
+			Priority priority = Priority.valueOf(components[2].trim().toUpperCase());
+			String[] tags = components[3].split(", ");
 
-			this.tasks.add(new TaskImpl(status, descr, priority, tags));
+			this.tasks.add(new TaskImpl(status, description, priority, tags));
 		}
 	}
 	
-	public TodoListImpl(List<Task> list) {
+	private TodoListImpl(List<Task> list) {
 		this.tasks = new ArrayList<>(list);
 	}
 
@@ -46,7 +44,7 @@ public class TodoListImpl implements TodoList {
 		long numCompleted = tasks.stream()
 				.filter(t -> t.getStatus() == Status.DONE)
 				.count();
-		return new Double(Math.round((numCompleted / tasks.size()) * 100.0));
+		return (double) Math.round((numCompleted / tasks.size()) * 100.0);
 	}
 
 	@Override
@@ -57,7 +55,7 @@ public class TodoListImpl implements TodoList {
 	@Override
 	public TodoList filter(Criteria criteria) {
 		return new TodoListImpl(this.getTasks().stream()
-				.filter(criteria.getFilter())
+				.filter(((AbstractCriteria) criteria)::test)
 				.collect(Collectors.toList()));
 	}
 	
