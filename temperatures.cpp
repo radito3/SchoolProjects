@@ -22,26 +22,26 @@ struct comparator {
  closest to zero (for instance, if the temperatures are -5 and 5, then display 5).
 **/
 int main() {
-    int n; // the number of temperatures to analyse
-    cin >> n; 
+    cout << "Enter number of temperatures to analyze: ";
+    int n;
+    cin >> n;
     cin.ignore();
 
     if (n == 0) {
         cout << "0" << endl;
         return 0;
     }
-    
-    string temps; // the n temperatures expressed as integers ranging from -273 to 5526
-    getline(cin, temps);
-    
-    stringstream ss(temps);
 
-    set<int, comparator> numbers;
-
-    while (ss) {
-        int a;
-        ss >> a;
-        numbers.insert(a);
+    set<int, comparator> numbers; // the n temperatures expressed as integers ranging from -273 to 5526
+    
+    for (int i = 0; i < n; ++i) {
+        int arg;
+        cin >> arg;
+        cin.ignore(); //skips the 'enter' character
+        if (arg < -273 || arg > 5526) {
+            throw out_of_range("number not in range: [-273, 5526]");
+        }
+        numbers.insert(arg);
     }
 
     cout << *numbers.begin() << endl;
