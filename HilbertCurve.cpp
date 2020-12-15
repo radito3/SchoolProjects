@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <cstdlib>
 
@@ -23,7 +24,7 @@ public:
 class HilbertCurve {
 	std::vector<Point> curve_;
 
-	static void concat(std::vector<Point>& target, std::vector<Point> source) {
+	static void concat(std::vector<Point>& target, const std::vector<Point>& source) {
 		target.insert(target.end(), source.begin(), source.end());
 	}
 
@@ -102,18 +103,20 @@ public:
 		return 2 * count_lines(order - 1) + 1;
 	}
 
-	void print() {
-		std::cout << "newpath" << std::endl;
-		std::cout << curve_[0].get_x() << " " << curve_[0].get_y() << " moveto" << std::endl;
+	void draw(std::ostream& out) {
+		out << "newpath" << std::endl;
+		out << curve_[0].get_x() << " " << curve_[0].get_y() << " moveto" << std::endl;
 		for (int i = 1; i < curve_.size(); i++) {
-			std::cout << curve_[i].get_x() << " " << curve_[i].get_y() << " lineto" << std::endl;
+			out << curve_[i].get_x() << " " << curve_[i].get_y() << " lineto" << std::endl;
 		}
-		std::cout << "stroke" << std::endl;
+		out << "stroke" << std::endl;
 	}
 };
 
 int main() {
 	HilbertCurve hc(10, 10);
-	hc.print();
+	std::ofstream file("hilbert.ps");
+	hc.draw(file);
+	file.close();
 	return 0;
 }
