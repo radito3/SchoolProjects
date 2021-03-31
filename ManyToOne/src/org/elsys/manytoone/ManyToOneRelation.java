@@ -20,7 +20,7 @@ import java.util.*;
  */
 public class ManyToOneRelation<M, O> {
 	
-	private Map<Set<M>, O> map;
+	private final Map<O, Set<M>> map;
 
 	public ManyToOneRelation() {
 		map = new LinkedHashMap<>();
@@ -35,20 +35,13 @@ public class ManyToOneRelation<M, O> {
 	 * @return
 	 */
 	public boolean connect(M source, O target) {
-	    boolean foundTarget = false;
-        for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-			if (entry.getValue().equals(target)) {
-				foundTarget = true;
-				entry.getKey().add(source);
-			} else {
-				entry.getKey().remove(source);
-			}
-        }
-		map.keySet().removeIf(Set::isEmpty);
-		if (!foundTarget) {
-			map.put(new HashSet<>(Collections.singleton(source)), target);
+		Set<M> prevSources = map.get(target);
+		if (prevSources == null) {
+			map.put(target, new HashSet<>(Collections.singleton(source)));
+			return true;
 		}
-        return true;
+		prevSources.clear();
+		return prevSources.add(source);
 	}
 
 	/**
@@ -56,12 +49,9 @@ public class ManyToOneRelation<M, O> {
 	 * @return <code>true</code> if the relation contains the given source
 	 */
 	public boolean containsSource(M source) {
-        for (Set<M> sources : map.keySet()) {
-            if (sources.contains(source)) {
-            	return true;
-			}
-        }
-		return false;
+		return map.values()
+				  .stream()
+				  .anyMatch(sources -> sources.contains(source));
 	}
 
 	/**
@@ -69,7 +59,7 @@ public class ManyToOneRelation<M, O> {
 	 * @return <code>true</code> if the relation contains the given target
 	 */
 	public boolean containsTarget(O target) {
-		return map.containsValue(target);
+		return map.containsKey(target);
 	}
 
 	/**
@@ -77,12 +67,13 @@ public class ManyToOneRelation<M, O> {
 	 * @return the target with which this source is connected
 	 */
 	public O getTarget(M source) {
-        for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-        	if (entry.getKey().contains(source)) {
-        		return entry.getValue();
-			}
-        }
-		return null;
+		return map.entrySet()
+				  .stream()
+				  .filter(entry -> entry.getValue()
+										 .contains(source))
+				  .map(Map.Entry::getKey)
+				  .findFirst()
+				  .orElse(null);
 	}
 
 	/**
@@ -91,12 +82,11 @@ public class ManyToOneRelation<M, O> {
 	 *         collection if there are no sources connected with this target.
 	 */
 	public Collection<M> getSources(O target) {
-        for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-            if (entry.getValue().equals(target)) {
-                return entry.getKey();
-            }
-        }
-        return Collections.emptySet();
+		Collection<M> sources = map.get(target);
+		if (sources == null) {
+			return Collections.emptySet();
+		}
+		return sources;
 	}
 
 	/**
@@ -109,14 +99,13 @@ public class ManyToOneRelation<M, O> {
 	 * @param source
 	 */
 	public void disconnectSource(M source) {
-        for (Set<M> sources : map.keySet()) {
-        	if (sources.remove(source)) {
-				if (sources.isEmpty()) {
-					map.remove(sources);
-				}
-				break;
+		for (Iterator<Set<M>> it = map.values().iterator(); it.hasNext();) {
+			Set<M> sources = it.next();
+			sources.remove(source);
+			if (sources.isEmpty()) {
+				it.remove();
 			}
-        }
+		}
 	}
 
 	/**
@@ -130,31 +119,28 @@ public class ManyToOneRelation<M, O> {
 	 * @param target
 	 */
 	public void disconnect(O target) {
-        for (Map.Entry<Set<M>, O> entry : map.entrySet()) {
-            if (entry.getValue().equals(target)) {
-                map.remove(entry.getKey());
-                break;
-            }
-        }
+		map.remove(target);
 	}
 
 	/**
 	 * @return a collection of the targets.
 	 */
 	public Collection<O> getTargets() {
-		return map.values();
+		return map.keySet();
 	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ManyToOneRelation<?, ?> that = (ManyToOneRelation<?, ?>) o;
-        return Objects.equals(map, that.map);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		ManyToOneRelation<?, ?> that = (ManyToOneRelation<?, ?>) o;
+		return Objects.equals(map, that.map);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(map);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(map);
+	}
 }

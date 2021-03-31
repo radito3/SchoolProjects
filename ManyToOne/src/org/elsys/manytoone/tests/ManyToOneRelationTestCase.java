@@ -52,7 +52,7 @@ public class ManyToOneRelationTestCase {
 		map.connect("One", one);
 		map.connect("One1", one);
 		Collection<String> keys = map.getSources(one);
-		assertEquals(keys.size(), 2);
+		assertEquals(keys.size(), 1);
 	}
 
 	@Test
