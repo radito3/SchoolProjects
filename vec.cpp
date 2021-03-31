@@ -1,9 +1,19 @@
 #include <iostream>
 #include <cstdlib>
+#include <utility>
 
 using namespace std;
 
-class VectorError : exception {
+class VectorError : public exception {
+    const char* msg;
+    
+public:
+    VectorError() : msg("") {}
+    explicit VectorError(const char *msg) : msg(msg) {}
+    
+    const char *what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override {
+        return msg;
+    }
 };
 
 template<class T>
@@ -24,7 +34,8 @@ class Vector {
 public:
     explicit Vector(int capacity = 10) : capacity_(capacity),
                                          size_(0),
-                                         data_(new T[capacity]) {}
+                                         data_(new T[capacity])
+    {}
 
     ~Vector() {
         delete [] data_;
@@ -32,9 +43,14 @@ public:
 
     Vector(const Vector<T> &other) : size_(other.size_),
                                      capacity_(other.capacity_),
-                                     data_(new T[capacity_]) {
+                                     data_(new T[other.capacity_]) {
         copy(other.data_, other.data_ + other.size_, data_);
     }
+
+    Vector(Vector<T> &&other) noexcept : capacity_(exchange(other.capacity_, 0)),
+                                         size_(exchange(other.size_, 0)),
+                                         data_(exchange(other.data_, nullptr))
+    {}
 
     Vector<T> &operator=(const Vector<T> &other) {
         if (this == addressof(other)) {
@@ -48,6 +64,17 @@ public:
         return *this;
     }
 
+    Vector<T> &operator=(Vector<T> &&other) noexcept {
+        if (this == addressof(other)) {
+            return *this;
+        }
+        delete [] data_;
+        capacity_ = exchange(other.capacity_, 0);
+        size_ = exchange(other.size_, 0);
+        data_ = exchange(other.data_, nullptr);
+        return *this;
+    }
+
     bool empty() const {
         return size_ == 0;
     }
@@ -57,15 +84,15 @@ public:
     }
 
     T &operator[](int n) {
-        if (n > size_ || n > capacity_) {
-            throw VectorError();
+        if (n > size_) {
+            throw VectorError("Vector<T>::operator[]: n is larger than size");
         }
         return data_[n];
     }
 
     const T &operator[](int n) const {
-        if (n > size_ || n > capacity_) {
-            throw VectorError();
+        if (n > size_) {
+            throw VectorError("Vector<T>::operator[]: n is larger than size");
         }
         return data_[n];
     }
@@ -78,9 +105,6 @@ public:
     }
 
     int capacity() const {
-        if (capacity_ < size_) {
-            throw VectorError();
-        }
         return capacity_;
     }
 
@@ -101,7 +125,7 @@ public:
     }
 
     void push_back(const T &val) {
-        if (size_ > capacity_) {
+        if (size_ + 1 > capacity_) {
             resize();
         }
         data_[size_++] = val;
@@ -109,9 +133,9 @@ public:
 
     void pop_back() {
         if (empty()) {
-            throw VectorError();
+            throw VectorError("Vector<T>::pop_back: vector is empty");
         }
-        data_[size_ - 1] = NULL;
+        data_[size_ - 1] = nullptr;
         size_--;
     }
 
@@ -134,11 +158,15 @@ public:
         }
 
         iterator operator++(int) {
-            return iterator(elem_++);
+            iterator tmp = *this;
+            elem_++;
+            return tmp;
         }
 
         iterator operator--(int) {
-            return iterator(elem_--);
+            iterator tmp = *this;
+            elem_--;
+            return tmp;
         }
 
         iterator operator--() {
@@ -147,15 +175,17 @@ public:
         }
 
         iterator operator+(int x) {
-            return iterator(elem_ + x);
+            iterator tmp = *this;
+            elem_ += x;
+            return tmp;
         }
 
         bool operator!=(const iterator &other) const {
-            return *elem_ != *other.elem_;
+            return elem_ != other.elem_;
         }
 
         bool operator==(const iterator &other) const {
-            return *elem_ == *other.elem_;
+            return elem_ == other.elem_;
         }
     };
 
@@ -169,30 +199,39 @@ public:
 
     int where(iterator pos) const {
         if (empty()) {
-            throw VectorError();
+            return -1;
         }
+        iterator it = begin();
         int i = 0;
-        for (; data_[i] != *pos; i++)
-            ;
+        while (i < size_ && it != pos) {
+            i++;
+            it++;
+        }
         return i >= size_ ? -1 : i;
     }
 
     iterator insert(iterator pos, const T &x) {
-        size_++;
-        if (size_ > capacity_) {
+        if (size_ + 1 > capacity_) {
             resize();
         }
         int idx_of_iter = where(pos);
-        copy(data_ + (idx_of_iter + 1), data_ + (size_ - 1), data_ + (idx_of_iter + 2));
-        data_[idx_of_iter + 1] = x;
-        return iterator(data_ + idx_of_iter + 2);
+        T* tmp = new T[size_ - idx_of_iter];
+        copy(data_ + idx_of_iter, data_ + size_, tmp);
+        data_[idx_of_iter] = x;
+        size_++;
+        copy(tmp, tmp + (size_ - idx_of_iter), data_ + (idx_of_iter + 1));
+        delete [] tmp;
+        return iterator(data_ + (idx_of_iter + 1));
     }
 
     iterator erase(iterator pos) {
         if (empty()) {
-            throw VectorError();
+            throw VectorError("Vector<T>::erase: vector is empty");
         }
         int idx_of_iter = where(pos);
+        if (idx_of_iter == -1) {
+            throw VectorError("Vector<T>::erase: invalid iterator");
+        }
         data_[idx_of_iter] = NULL;
         copy(data_ + (idx_of_iter + 1), data_ + size_, data_ + idx_of_iter);
         size_--;
@@ -201,9 +240,10 @@ public:
 
     iterator erase(iterator first, iterator last) {
         if (empty()) {
-            throw VectorError();
+            throw VectorError("Vector<T>::erase: vector is empty");
         }
-        while (first != last) {
+        //something here is not right...
+        while (first != last) { 
             first = erase(first);
         }
         return iterator(last);
@@ -228,11 +268,15 @@ public:
         }
 
         const_iterator operator++(int) {
-            return const_iterator(elem_++);
+            const_iterator tmp = *this;
+            elem_++;
+            return tmp;
         }
 
         const_iterator operator--(int) {
-            return const_iterator(elem_--);
+            const_iterator tmp = *this;
+            elem_--;
+            return tmp;
         }
 
         const_iterator operator--() {
@@ -241,11 +285,11 @@ public:
         }
 
         bool operator!=(const const_iterator &other) const {
-            return *elem_ != *other.elem_;
+            return elem_ != other.elem_;
         }
 
         bool operator==(const const_iterator &other) const {
-            return *elem_ == *other.elem_;
+            return elem_ == other.elem_;
         }
     };
 
@@ -276,11 +320,15 @@ public:
         }
 
         reverse_iterator operator++(int) {
-            return reverse_iterator(elem_--);
+            reverse_iterator tmp = *this;
+            elem_--;
+            return tmp;
         }
 
         reverse_iterator operator--(int) {
-            return reverse_iterator(elem_++);
+            reverse_iterator tmp = *this;
+            elem_++;
+            return tmp;
         }
 
         reverse_iterator operator--() {
@@ -289,16 +337,16 @@ public:
         }
 
         bool operator!=(const reverse_iterator &other) const {
-            return *elem_ != *other.elem_;
+            return elem_ != other.elem_;
         }
 
         bool operator==(const reverse_iterator &other) const {
-            return *elem_ == *other.elem_;
+            return elem_ == other.elem_;
         }
     };
 
     reverse_iterator rbegin() const {
-        return reverse_iterator(data_ + (size_ - 1));
+        return reverse_iterator(data_ + ((size_ > 0 ? size_ : 1) - 1));
     }
 
     reverse_iterator rend() const {
@@ -337,16 +385,16 @@ public:
         }
 
         bool operator!=(const const_reverse_iterator &other) const {
-            return *elem_ != *other.elem_;
+            return elem_ != other.elem_;
         }
 
         bool operator==(const const_reverse_iterator &other) const {
-            return *elem_ == *other.elem_;
+            return elem_ == other.elem_;
         }
     };
 
     const_reverse_iterator crbegin() const {
-        return const_reverse_iterator(data_ + (size_ - 1));
+        return const_reverse_iterator(data_ + ((size_ > 0 ? size_ : 1) - 1));
     }
 
     const_reverse_iterator crend() const {
@@ -375,33 +423,40 @@ int main(int argc, char *argv[]) {
     cout << "v2: {" << v2 << '}' << endl;
 
     bool eq = false;
-    for (Vector<int>::iterator it1 = v1.begin(), it2 = v2.begin(); it1 != v1.end(), it2 != v2.end(); it1++, it2++) {
-        if (*it1 == *it2) {
-            cout << "equal element in v1 and v2: " << *it1 << endl;
-            eq = true;
+    for (auto el : v1) {
+        for (auto el2 : v2) {
+            if (el == el2) {
+                cout << "equal element in v1 and v2: " << el << endl;
+                eq = true;
+            }
         }
     }
     if (!eq) {
-        cout << "equal element in v1 and v2: 0" << endl;
+        cout << "no equal elements in v1 and v2" << endl;
     }
+
     v1.push_back(-100);
     v2.push_back(-100);
 
     cout << "v1: {" << v1 << '}' << endl;
     cout << "v2: {" << v2 << '}' << endl;
 
-    Vector<int> v = v2;
-    cout << "v" << v << endl;
+    Vector<int> v;
+    v = v2;
+    cout << "v: {" << v << '}' << endl;
     for (Vector<int>::reverse_iterator it = v1.rbegin(); it != v1.rend(); it++) {
         v.insert(v.begin(), *it);
     }
 
-    cout << "v: {" << v << '}' << endl;
+    cout << "-v: {" << v << '}' << endl;
+    v.erase(v.begin());
+    cout << "--v: {" << v << '}' << endl;
+    v.erase(--v.end());
+    cout << "---v: {" << v << '}' << endl;
 
     for (Vector<int>::iterator it = v.begin(); it != v.end(); it++) {
         if (*it == -100) {
-            Vector<int>::iterator bit = it;
-            v.erase(bit, v.end());
+            v.erase(it, v.end());
             break;
         }
     }
