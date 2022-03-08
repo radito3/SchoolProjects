@@ -1,6 +1,7 @@
 package org.elsys.todo.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,7 +30,7 @@ public class TodoListImpl implements TodoList {
 		}
 	}
 	
-	private TodoListImpl(List<Task> list) {
+	private TodoListImpl(Collection<Task> list) {
 		this.tasks = new ArrayList<>(list);
 	}
 
@@ -63,7 +64,7 @@ public class TodoListImpl implements TodoList {
 	public TodoList join(TodoList other) {
 		Set<Task> allTasks = new HashSet<>(tasks);
 		allTasks.addAll(other.getTasks());
-		return new TodoListImpl(new ArrayList<>(allTasks));
+		return new TodoListImpl(allTasks);
 	}
 
 }
