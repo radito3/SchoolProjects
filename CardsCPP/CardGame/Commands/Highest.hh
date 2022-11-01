@@ -10,13 +10,16 @@ class Highest : public Command {
 public:
     explicit Highest(Game *game) : game_(game) {}
 
+    bool matches(const std::string &command) override {
+        return command == "highest";
+    }
+
     void execute() override {
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");
         }
-        const Card *highest = game_->get_hand().draw_highest();
-        std::cout << *highest << std::endl;
-        delete highest;
+        Card highest = game_->get_hand().draw_highest();
+        std::cout << highest << std::endl;
     }
 };
 

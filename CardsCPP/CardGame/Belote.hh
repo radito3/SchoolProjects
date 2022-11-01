@@ -4,41 +4,34 @@
 #include "Command.hh"
 #include "Game.h"
 #include "BeloteGameInfo.h"
-#include <unordered_map>
 #include <iostream>
 #include <vector>
 
 class Belote : public Game {
 
-    std::unordered_map<std::string, Command *> get_commands() const;
-
     bool n_adjacent_cards_of_a_suit(int n) const {
         std::vector<char> suits = BeloteGameInfo().get_suits();
-        return std::any_of(suits.begin(), suits.end(), [&](const char& suit) -> bool {
+        return std::any_of(suits.begin(), suits.end(), [&](char suit) -> bool {
             return hand_.adjacent_cards_of_a_suit(suit) >= n;
         });
     }
 
 public:
-    Belote() : Game(new BeloteGameInfo) {}
+    Belote();
 
-    Commands get_available_commands() const override {
-        return Commands(get_commands());
-    }
+    void print_highest_of_suit(char suit) const {
+        Card highest = hand_.get_highest_of_suit(suit);
 
-    void print_highest_of_suit(const char& suit) const {
-        const Card *highest = hand_.get_highest_of_suit(suit);
-
-        if (highest == nullptr) {
+        if (highest.power == -1) {
             std::cout << std::endl;
         } else {
-            std::cout << *highest << std::endl;
+            std::cout << highest << std::endl;
         }
     }
 
     bool is_belote() const {
         std::vector<char> suits = BeloteGameInfo().get_suits();
-        return std::any_of(suits.begin(), suits.end(), [&](const char& suit) -> bool {
+        return std::any_of(suits.begin(), suits.end(), [&](char suit) -> bool {
             return hand_.matching_suits_on_Q_K(suit);
         });
     }

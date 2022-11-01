@@ -1,30 +1,39 @@
 #ifndef CARDGAME_GAME_H
 #define CARDGAME_GAME_H
 
-#include <unordered_map>
 #include "Command.hh"
+#include "Deck.hh"
 #include "Hand.hh"
-#include "Commands.h"
 #include "GameInfo.h"
 
 class Game {
-protected:
-    std::unordered_map<std::string, Command*> get_common_commands() const;
+    std::vector<Command*> commands;
 
+    Command* find_command(const std::string& command) const {
+        for (auto* cmd : commands) {
+            if (cmd->matches(command)) {
+                return cmd;
+            }
+        }
+        return nullptr;
+    }
+
+protected:
     Deck deck_;
     Hand hand_;
 
-public:
-    explicit Game(GameInfo* game_info)
-        : deck_(game_info->get_suits(), game_info->get_ranks()), hand_(game_info->get_hand_size())
-    {
-        deck_.print();
-        delete game_info;
+    void add_command(Command* command) {
+        commands.push_back(command);
     }
 
-    virtual ~Game() = default;
+public:
+    explicit Game(GameInfo* game_info);
 
-    virtual Commands get_available_commands() const = 0;
+    virtual ~Game() {
+        for (auto* cmd : commands) {
+            delete cmd;
+        }
+    }
 
     Deck& get_deck() {
         return deck_;
@@ -35,13 +44,12 @@ public:
     }
 
     void play(const std::vector<std::string>& user_commands) const {
-        Commands game_commands = get_available_commands();
-
         for (const std::string& command : user_commands) {
-            if (!game_commands.is_valid(command)) {
+            Command* cmd = find_command(command);
+            if (cmd == nullptr) {
                 throw GameError("ERROR: Unknown command.");
             }
-            game_commands.get(command)->execute();
+            cmd->execute();
         }
     }
 };

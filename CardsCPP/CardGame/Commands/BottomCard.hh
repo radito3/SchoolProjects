@@ -10,6 +10,10 @@ class BottomCard : public Command {
 public:
     explicit BottomCard(Game *game) : game_(game) {}
 
+    bool matches(const std::string &command) override {
+        return command == "bottom_card";
+    }
+
     void execute() override {
         if (game_->get_hand().is_dealt()) {
             game_->get_hand().clear();

@@ -5,19 +5,13 @@
 #include "Commands/IsQuint.h"
 #include "Commands/HighestOfSuit.h"
 
-#include <unordered_map>
-
-std::unordered_map<std::string, Command *> Belote::get_commands() const {
-    std::unordered_map<std::string, Command *> commands = std::move(get_common_commands());
-
-    commands.emplace("highest_of_suit:spades", new HighestOfSuit((Belote *) this, 'S'));
-    commands.emplace("highest_of_suit:hearts", new HighestOfSuit((Belote *) this, 'H'));
-    commands.emplace("highest_of_suit:diamonds", new HighestOfSuit((Belote *) this, 'D'));
-    commands.emplace("highest_of_suit:clubs", new HighestOfSuit((Belote *) this, 'C'));
-    commands.emplace("belote?", new IsBelote((Belote *) this));
-    commands.emplace("tierce?", new IsTierce((Belote *) this));
-    commands.emplace("quarte?", new IsQuarte((Belote *) this));
-    commands.emplace("quint?", new IsQuint((Belote *) this));
-
-    return commands;
+Belote::Belote() : Game(new BeloteGameInfo) {
+    add_command(new HighestOfSuit((Belote *) this, 'S', "spades"));
+    add_command(new HighestOfSuit((Belote *) this, 'H', "hearts"));
+    add_command(new HighestOfSuit((Belote *) this, 'D', "diamonds"));
+    add_command(new HighestOfSuit((Belote *) this, 'C', "clubs"));
+    add_command(new IsBelote((Belote *) this));
+    add_command(new IsTierce((Belote *) this));
+    add_command(new IsQuarte((Belote *) this));
+    add_command(new IsQuint((Belote *) this));
 }

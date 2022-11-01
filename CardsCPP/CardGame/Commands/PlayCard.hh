@@ -10,13 +10,16 @@ class PlayCard : public Command {
 public:
     explicit PlayCard(Game* game) : game_(game) {}
 
+    bool matches(const std::string &command) override {
+        return command == "play_card";
+    }
+
     void execute() override {
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");
         }
-        const Card* first = game_->get_hand().draw_first();
-        std::cout << *first << std::endl;
-        delete first;
+        Card first = game_->get_hand().draw_first();
+        std::cout << first << std::endl;
     }
 };
 

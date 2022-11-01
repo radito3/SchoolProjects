@@ -10,6 +10,10 @@ class Remaining : public Command {
 public:
     explicit Remaining(Game *game) : game_(game) {}
 
+    bool matches(const std::string &command) override {
+        return command == "num_remaining_cards";
+    }
+
     void execute() override {
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command");

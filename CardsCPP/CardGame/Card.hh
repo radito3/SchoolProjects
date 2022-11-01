@@ -4,19 +4,17 @@
 #include <ostream>
 
 struct Card {
-    char suit;
-    char rank;
+    char suit{};
+    char rank{};
     int power;
 
     Card(char suit, char rank, int pow)
             : suit(suit), rank(rank), power(pow) {};
+
+    Card() : power(-1) {}
 };
 
 struct power_comparator {
-    bool operator()(const Card *x, const Card *y) const {
-        return x->power < y->power;
-    }
-
     bool operator()(const Card &x, const Card &y) const {
         return x.power < y.power;
     }

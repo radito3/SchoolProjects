@@ -7,10 +7,18 @@
 
 class IsTwenty : public Command {
     Santase *game_;
-    const char suit_;
+    char suit_;
+    const char *suit_full_name_;
 
 public:
-    IsTwenty(Santase *game, const char suit) : game_(game), suit_(suit) {}
+    IsTwenty(Santase *game, char suit, const char *suit_full_name)
+            : game_(game), suit_(suit), suit_full_name_(suit_full_name) {}
+
+    bool matches(const std::string &command) override {
+        std::string cmd_name("twenty?:");
+        cmd_name.append(suit_full_name_);
+        return command == cmd_name;
+    }
 
     void execute() override {
         if (!game_->get_hand().is_dealt()) {

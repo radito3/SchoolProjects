@@ -6,11 +6,19 @@
 #include "../GameError.hh"
 
 class HighestOfSuit : public Command {
-    Belote* game_;
-    const char suit_;
+    Belote *game_;
+    char suit_;
+    const char *suit_full_name_;
 
 public:
-    HighestOfSuit(Belote* game, const char suit) : game_(game), suit_(suit) {}
+    HighestOfSuit(Belote *game, char suit, const char *suit_full_name)
+            : game_(game), suit_(suit), suit_full_name_(suit_full_name) {}
+
+    bool matches(const std::string &command) override {
+        std::string cmd_name("highest_of_suit:");
+        cmd_name.append(suit_full_name_);
+        return command == cmd_name;
+    }
 
     void execute() override {
         if (!game_->get_hand().is_dealt()) {

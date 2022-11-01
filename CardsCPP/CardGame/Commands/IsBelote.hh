@@ -11,6 +11,10 @@ class IsBelote : public Command {
 public:
     explicit IsBelote(Belote *game) : game_(game) {}
 
+    bool matches(const std::string &command) override {
+        return command == "belote?";
+    }
+
     void execute() override {
         if (!game_->get_hand().is_dealt()) {
             throw GameError("ERROR: Unknown command.");
