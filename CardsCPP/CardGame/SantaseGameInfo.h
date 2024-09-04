@@ -6,8 +6,9 @@
 class SantaseGameInfo : public GameInfo {
 
 public:
-    std::vector<char> get_ranks() const override {
-        return {'9', 'J', 'Q', 'K', 'T', 'A'};
+    std::vector<Card::Rank> get_ranks() const override {
+        return {Card::Rank::NINE, Card::Rank::JACK, Card::Rank::QUEEN,
+         Card::Rank::KING, Card::Rank::TEN, Card::Rank::ACE};
     }
 
     int get_hand_size() const override {

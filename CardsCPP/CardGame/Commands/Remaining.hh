@@ -11,7 +11,7 @@ public:
     explicit Remaining(Game *game) : game_(game) {}
 
     bool matches(const std::string &command) override {
-        return command == "num_remaining_cards";
+        return command == "remaining";
     }
 
     void execute() override {

@@ -4,18 +4,11 @@
 #include "GameError.hh"
 #include "Dealer.h"
 #include <set>
+#include <ranges>
 #include <algorithm>
 #include <iostream>
 
 class Hand {
-
-    struct rank_comparator {
-        const std::string ranks = {'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
-
-        bool operator()(const Card &x, const Card &y) const {
-            return ranks.find(x.rank) < ranks.find(y.rank);
-        }
-    } rank_cmp;
 
     std::set<Card, power_comparator> hand_;
     const int hand_size_;
@@ -27,8 +20,14 @@ class Hand {
         }
     }
 
-    size_t index_of_rank(const Card& card) const {
-        return rank_cmp.ranks.find(card.rank);
+    int create_bitfield_from_hand(Card::Suit suit) const {
+        int result = 0;
+        for (auto& card : hand_) {
+            if (card.suit == suit) {
+                result |= (1 << static_cast<int>(card.rank));
+            }
+        }
+        return result;
     }
 
 public:
@@ -47,41 +46,21 @@ public:
     }
 
     bool matching_suits_on_Q_K(char suit) const {
-        size_t matching = std::count_if(hand_.begin(), hand_.end(), [&](const Card &card) -> bool {
-            return card.suit == suit && (card.rank == 'Q' || card.rank == 'K');
+        auto matching = std::ranges::count_if(hand_, [&](const Card &card) {
+            return card.suit == suit && (card.rank == Card::Rank::QUEEN || card.rank == Card::Rank::KING);
         });
         return matching == 2;
     }
 
-    int adjacent_cards_of_a_suit(char suit) const {
-        std::set<Card, rank_comparator> cards_by_rank;
+    int adjacent_cards_of_a_suit(Card::Suit suit) const {
+        int bitfield = create_bitfield_from_hand(suit);
+        int max_sequence = 0;  // longest consecutive bit subsequence
 
-        for (Card card : hand_) {
-            if (card.suit == suit) {
-                cards_by_rank.insert(card);
-            }
+        while (bitfield != 0) {
+            bitfield &= (bitfield << 1);  // Collapse consecutive 1s
+            max_sequence++;
         }
 
-        if (cards_by_rank.empty()) {
-            return 0;
-        }
-
-        int current_sequence = 1, max_sequence = 1;
-        auto current = cards_by_rank.begin();
-        auto next = current;
-        ++next;
-
-        for (; next != cards_by_rank.end(); ++current, ++next) {
-            if ((index_of_rank(*next) - index_of_rank(*current)) == 1) {
-                current_sequence++;
-            } else {
-                current_sequence = 1;
-            }
-
-            if (current_sequence > max_sequence) {
-                max_sequence = current_sequence;
-            }
-        }
         return max_sequence;
     }
 
@@ -129,13 +108,13 @@ public:
         return last;
     }
 
-    Card get_highest_of_suit(char suit) const {
+    Card get_highest_of_suit(Card::Suit suit) const {
         check_size();
-        auto highest = std::find_if(hand_.rbegin(), hand_.rend(), [&](const Card& card) -> bool {
+        auto highest = std::ranges::find_if(std::ranges::reverse_view{hand_}, [&](auto& card) {
             return card.suit == suit;
         });
 
-        if (highest == hand_.rend()) {
+        if (highest == std::ranges::rend(hand_)) {
             return {};
         }
         return *highest;

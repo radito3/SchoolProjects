@@ -10,8 +10,8 @@
 class Belote : public Game {
 
     bool n_adjacent_cards_of_a_suit(int n) const {
-        std::vector<char> suits = BeloteGameInfo().get_suits();
-        return std::any_of(suits.begin(), suits.end(), [&](char suit) -> bool {
+        std::vector<Card::Suit> suits = BeloteGameInfo().get_suits();
+        return std::ranges::any_of(suits, [&](auto suit) {
             return hand_.adjacent_cards_of_a_suit(suit) >= n;
         });
     }
@@ -19,7 +19,7 @@ class Belote : public Game {
 public:
     Belote();
 
-    void print_highest_of_suit(char suit) const {
+    void print_highest_of_suit(Card::Suit suit) const {
         Card highest = hand_.get_highest_of_suit(suit);
 
         if (highest.power == -1) {
@@ -30,8 +30,8 @@ public:
     }
 
     bool is_belote() const {
-        std::vector<char> suits = BeloteGameInfo().get_suits();
-        return std::any_of(suits.begin(), suits.end(), [&](char suit) -> bool {
+        std::vector<Card::Suit> suits = BeloteGameInfo().get_suits();
+        return std::ranges::any_of(suits, [&](auto suit) {
             return hand_.matching_suits_on_Q_K(suit);
         });
     }

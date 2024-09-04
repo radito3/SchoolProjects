@@ -4,14 +4,38 @@
 #include <ostream>
 
 struct Card {
-    char suit{};
-    char rank{};
+    
+    enum Suit {
+        CLUBS,
+        DIAMONDS,
+        HEARTS,
+        SPADES
+    };
+
+    enum Rank {
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        QUEEN,
+        KING,
+        ACE
+    };
+
+    Suit suit;
+    Rank rank;
     int power;
 
-    Card(char suit, char rank, int pow)
+    Card(Suit suit, Rank rank, int pow)
             : suit(suit), rank(rank), power(pow) {};
 
-    Card() : power(-1) {}
+    Card() : suit(Suit::CLUBS), rank(Rank::TWO), power(-1) {}
 };
 
 struct power_comparator {
@@ -21,5 +45,9 @@ struct power_comparator {
 };
 
 std::ostream &operator<<(std::ostream &, const Card &);
+
+std::ostream &operator<<(std::ostream &, const Card::Suit &);
+
+std::ostream &operator<<(std::ostream &, const Card::Rank &);
 
 #endif //CARDGAME_CARD_HH

@@ -1,6 +1,8 @@
 #ifndef CARDGAME_GAME_H
 #define CARDGAME_GAME_H
 
+#include <ranges>
+#include <algorithm>
 #include "Command.hh"
 #include "Deck.hh"
 #include "Hand.hh"
@@ -9,13 +11,9 @@
 class Game {
     std::vector<Command*> commands;
 
-    Command* find_command(const std::string& command) const {
-        for (auto* cmd : commands) {
-            if (cmd->matches(command)) {
-                return cmd;
-            }
-        }
-        return nullptr;
+    Command* find_command(std::string&& command) const {
+        auto result = std::ranges::find_if(commands, [&](auto* cmd) { return cmd->matches(command); });
+        return result != commands.end() ? *result : nullptr;
     }
 
 protected:
@@ -43,9 +41,9 @@ public:
         return hand_;
     }
 
-    void play(const std::vector<std::string>& user_commands) const {
-        for (const std::string& command : user_commands) {
-            Command* cmd = find_command(command);
+    void play(std::ranges::view auto&& user_commands) const {
+        for (auto command : user_commands) {  // user_commands is a range of sub-ranges (produced by views::split)
+            Command* cmd = find_command(std::string(command.begin(), command.end()));
             if (cmd == nullptr) {
                 throw GameError("ERROR: Unknown command.");
             }

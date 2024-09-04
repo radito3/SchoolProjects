@@ -7,11 +7,11 @@
 
 class IsFourty : public Command {
     Santase *game_;
-    char suit_;
+    Card::Suit suit_;
     const char *suit_full_name_;
 
 public:
-    IsFourty(Santase *game, char suit, const char *suit_full_name)
+    IsFourty(Santase *game, Card::Suit suit, const char *suit_full_name)
             : game_(game), suit_(suit), suit_full_name_(suit_full_name) {}
 
     bool matches(const std::string &command) override {

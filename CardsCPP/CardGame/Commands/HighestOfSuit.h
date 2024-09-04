@@ -7,11 +7,11 @@
 
 class HighestOfSuit : public Command {
     Belote *game_;
-    char suit_;
+    Card::Suit suit_;
     const char *suit_full_name_;
 
 public:
-    HighestOfSuit(Belote *game, char suit, const char *suit_full_name)
+    HighestOfSuit(Belote *game, Card::Suit suit, const char *suit_full_name)
             : game_(game), suit_(suit), suit_full_name_(suit_full_name) {}
 
     bool matches(const std::string &command) override {

@@ -4,6 +4,7 @@
 #include "Card.hh"
 #include "GameError.hh"
 #include <deque>
+#include <ranges>
 #include <algorithm>
 #include <random>
 #include <iostream>
@@ -19,10 +20,10 @@ class Deck {
     }
 
 public:
-    Deck(const std::vector<char>& suits, const std::vector<char>& ranks) {
+    Deck(const std::vector<Card::Suit>& suits, const std::vector<Card::Rank>& ranks) {
         int power = 0;
-        for (char suit : suits) {
-            for (char rank : ranks) {
+        for (auto suit : suits) {
+            for (auto rank : ranks) {
                 deck_.emplace_back(suit, rank, power++);
             }
         }
@@ -45,12 +46,12 @@ public:
 
     void shuffle() {
         check_size();
-        std::shuffle(deck_.begin(), deck_.end(), std::mt19937(std::random_device()()));
+        std::ranges::shuffle(deck_, std::mt19937(std::random_device()()));
     }
 
     void sort() {
         check_size();
-        std::sort(deck_.begin(), deck_.end(), power_comparator());
+        std::ranges::sort(deck_, power_comparator());
     }
 
     size_t size() const {

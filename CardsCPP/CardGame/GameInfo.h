@@ -8,11 +8,11 @@ class GameInfo {
 public:
     virtual ~GameInfo() = default;
 
-    virtual std::vector<char> get_suits() const {
-        return {'C', 'D', 'H', 'S'};
+    virtual std::vector<Card::Suit> get_suits() const {
+        return {Card::Suit::CLUBS, Card::Suit::DIAMONDS, Card::Suit::HEARTS, Card::Suit::SPADES};
     }
 
-    virtual std::vector<char> get_ranks() const = 0;
+    virtual std::vector<Card::Rank> get_ranks() const = 0;
 
     virtual int get_hand_size() const = 0;
 };
