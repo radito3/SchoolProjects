@@ -20,16 +20,6 @@ class Hand {
         }
     }
 
-    int create_bitfield_from_hand(Card::Suit suit) const {
-        int result = 0;
-        for (auto& card : hand_) {
-            if (card.suit == suit) {
-                result |= (1 << static_cast<int>(card.rank));
-            }
-        }
-        return result;
-    }
-
 public:
     explicit Hand(int hand_size) : hand_size_(hand_size), dealt_(false) {}
 
@@ -53,12 +43,25 @@ public:
     }
 
     int adjacent_cards_of_a_suit(Card::Suit suit) const {
-        int bitfield = create_bitfield_from_hand(suit);
-        int max_sequence = 0;  // longest consecutive bit subsequence
+        auto match_suit = [&](const Card& card) { return card.suit == suit; };
+        // a new container is needed because the sorting of the hand may not be
+        //  sorting by rank, otherwise, we can just operate on the hand container
+        auto cards_by_rank = hand_ | std::views::filter(match_suit) | std::ranges::to<std::set<Card, rank_comparator>>();
+        if (cards_by_rank.empty()) {
+            return 0;
+        }
 
-        while (bitfield != 0) {
-            bitfield &= (bitfield << 1);  // Collapse consecutive 1s
-            max_sequence++;
+        int current_sequence = 1, max_sequence = 1;
+        auto prev = *cards_by_rank.begin();
+
+        for (auto card : cards_by_rank) {
+            if (static_cast<int>(card.rank) - static_cast<int>(prev.rank) == 1) {
+                current_sequence++;
+            } else {
+                current_sequence = 1;
+            }
+            max_sequence = std::max(current_sequence, max_sequence);
+            prev = card;
         }
 
         return max_sequence;
