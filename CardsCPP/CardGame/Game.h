@@ -11,8 +11,8 @@
 class Game {
     std::vector<Command*> commands;
 
-    Command* find_command(std::string&& command) const {
-        auto result = std::ranges::find_if(commands, [&](auto* cmd) { return cmd->matches(command); });
+    Command* find_command(std::string&& command_name) const {
+        auto result = std::ranges::find_if(commands, [&](auto* cmd) { return cmd->matches(command_name); });
         return result != commands.end() ? *result : nullptr;
     }
 
@@ -43,7 +43,7 @@ public:
 
     void play(std::ranges::view auto&& user_commands) const {
         for (auto command : user_commands) {  // user_commands is a range of sub-ranges (produced by views::split)
-            Command* cmd = find_command(std::string(command.begin(), command.end()));
+            Command* cmd = find_command(command | std::ranges::to<std::string>());
             if (cmd == nullptr) {
                 throw GameError("ERROR: Unknown command.");
             }
