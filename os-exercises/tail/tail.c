@@ -35,13 +35,10 @@ void read_stdin(void) {
     // getline() keeps the newline character in the buffer
     while ((read = getline(&buffer, &buff_capacity, stdin)) != -1) {
         if (num_lines < 10) {
-            lines[num_lines] = (char*) malloc(sizeof(char) * read);
-            memcpy(lines[num_lines++], buffer, read);
+            lines[num_lines++] = strdup(buffer);
         } else {
             free(lines[num_overflow]);
-            lines[num_overflow] = NULL;
-            lines[num_overflow] = (char*) malloc(sizeof(char) * read);
-            memcpy(lines[num_overflow++], buffer, read);
+            lines[num_overflow++] = strdup(buffer);
             if (num_overflow == 10) {
                 num_overflow = 0; // loop to the beginning
             }
