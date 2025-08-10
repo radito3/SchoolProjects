@@ -6,7 +6,7 @@
 
 class War : public Game {
 public:
-    War() : Game(new WarGameInfo) {}
+    War() : Game(std::make_unique<WarGameInfo>()) {}
 };
 
 #endif //CARDGAME_WAR_HH

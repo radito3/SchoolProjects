@@ -10,7 +10,7 @@ class Remaining : public Command {
 public:
     explicit Remaining(Game *game) : game_(game) {}
 
-    bool matches(const std::string &command) override {
+    bool matches(const std::string_view &command) override {
         return command == "remaining";
     }
 

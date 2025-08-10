@@ -9,7 +9,7 @@ class Sort : public Command {
 public:
     explicit Sort(Game *game) : game_(game) {}
 
-    bool matches(const std::string &command) override {
+    bool matches(const std::string_view &command) override {
         return command == "sort";
     }
 

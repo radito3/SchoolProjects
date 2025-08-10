@@ -10,7 +10,7 @@ class DrawBottomCard : public Command {
 public:
     explicit DrawBottomCard(Game *game) : game_(game) {}
 
-    bool matches(const std::string &command) override {
+    bool matches(const std::string_view &command) override {
         return command == "draw_bottom_card";
     }
 

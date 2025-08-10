@@ -2,11 +2,11 @@
 #define CARDGAME_HAND_HH
 
 #include "GameError.hh"
-#include "Dealer.h"
 #include <set>
 #include <ranges>
 #include <algorithm>
 #include <iostream>
+#include <functional>
 
 class Hand {
 
@@ -47,14 +47,12 @@ public:
         // a new container is needed because the sorting of the hand may not be
         //  sorting by rank, otherwise, we can just operate on the hand container
         auto cards_by_rank = hand_ | std::views::filter(match_suit) | std::ranges::to<std::set<Card, rank_comparator>>();
-        if (cards_by_rank.empty()) {
-            return 0;
+        if (cards_by_rank.size() <= 1) {
+            return cards_by_rank.size();
         }
 
         int current_sequence = 1, max_sequence = 1;
-        auto prev = *cards_by_rank.begin();
-
-        for (auto card : cards_by_rank) {
+        for (auto prev = *cards_by_rank.begin(); auto card : cards_by_rank) {
             if (static_cast<int>(card.rank) - static_cast<int>(prev.rank) == 1) {
                 current_sequence++;
             } else {
@@ -63,16 +61,15 @@ public:
             max_sequence = std::max(current_sequence, max_sequence);
             prev = card;
         }
-
         return max_sequence;
     }
 
-    void deal(Dealer* dealer) {
-        if (dealer->num_remaining_cards() < hand_size_) {
+    void deal(int num_remaining_cards, std::function<Card()> deal_card) {
+        if (num_remaining_cards < hand_size_) {
             throw GameError("ERROR: Not enough cards in deck.");
         }
         for (size_t i = 0; i < hand_size_; i++) {
-            hand_.insert(dealer->deal_card());
+            hand_.insert(deal_card());
         }
         dealt_ = true;
     }

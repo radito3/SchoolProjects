@@ -11,7 +11,7 @@ class IsBelote : public Command {
 public:
     explicit IsBelote(Belote *game) : game_(game) {}
 
-    bool matches(const std::string &command) override {
+    bool matches(const std::string_view &command) override {
         return command == "belote?";
     }
 

@@ -1,24 +1,23 @@
 #include <iostream>
 #include <ranges>
-#include <algorithm>
 #include <string_view>
-#include <string>
+#include <span>
 #include "GameFactory.h"
 
-// compile with: g++-14 --std=c++23 -I$(pwd) -I$(pwd)/Commands *.cpp -o card_game
-
+// compile with: g++ --std=c++23 -Wall -Wpedantic -I$(pwd) -I$(pwd)/Commands *.cpp -o card_game
 int main(int argc, char *argv[]) {
-    auto input = std::views::split(std::string_view{argv[1]}, '.');
-    auto game_name = input | std::views::take(1) | std::views::join | std::ranges::to<std::string>();
-    Game *game = nullptr;
+    std::vector<std::string_view> parts;
+    for (auto part : std::string_view{argv[1]} | std::views::split('.')) {
+        parts.emplace_back(&*part.begin(), std::ranges::distance(part));
+    }
 
+    auto game_name = parts[0];
+    auto args = std::span(parts.begin() + 1, parts.end());
     try {
-        game = GameFactory::create_game(game_name);
-        game->play(input | std::views::drop(1));
+        auto game = GameFactory::create_game(game_name);
+        game->play(args);
     } catch (const GameError &err) {
         std::cerr << err.what() << std::endl;
     }
-
-    delete game;
     return 0;
 }
